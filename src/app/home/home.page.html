@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Notes </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Notes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div id="container">
+    <div *ngIf="notas >  0 ; else other_content">
+      <ion-row *ngFor="let item of lista">
+        <ion-col>
+          <ion-item
+            (click)="visualizarDetalhes(item.id, item.titulo, item.texto)"
+          >
+            <ion-label>
+              {{ item.titulo }}
+
+              <p>{{ item.texto }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ng-template #other_content> Nenhuma anotação encontrada </ng-template>
+  </div>
+</ion-content>

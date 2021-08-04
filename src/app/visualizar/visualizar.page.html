@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notes - Visualizar e Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container">
+  <ion-item-divider> </ion-item-divider>
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input
+      placeholder="Caso deseje insira um título"
+      [(ngModel)]="tituloNovo"
+    >
+    </ion-input>
+  </ion-item>
+
+  <ion-item-divider> </ion-item-divider>
+
+  <ion-item>
+    <ion-label position="floating">Descrição</ion-label>
+    <ion-textarea
+      placeholder="Insira seu texto aqui"
+      rows="18"
+      [(ngModel)]="textoNovo"
+      autocomplete="true"
+    >
+    </ion-textarea>
+  </ion-item>
+</div>
+<ion-content> </ion-content>
+
+<ion-footer>
+  <ion-row class="ion-align-items-start">
+    <ion-col>
+      <ion-button size="small" color="primary" (click)="paginaInicial()"
+        ><ion-icon name="chevron-back-outline" slot="start"></ion-icon
+        >Voltar</ion-button
+      >
+    </ion-col>
+
+    <ion-col>
+      <ion-button size="small" color="primary" (click)="Deletar()"
+        ><ion-icon name="close-outline" slot="start"></ion-icon
+        >Deletar</ion-button
+      >
+    </ion-col>
+
+    <ion-col class="ion-align-self-end">
+      <ion-button size="small" color="primary" (click)="Atualizar()">
+        <ion-icon name="add-outline" slot="start"></ion-icon> Salvar</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-footer>
