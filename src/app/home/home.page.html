@@ -1,3 +1,27 @@
+<!--
+               _____            _        _   _       _            
+              |_   _|          (_)      | \ | |     | |           
+                | |  ___  _ __  _  ___  |  \| | ___ | |_ ___  ___ 
+                | | / _ \| '_ \| |/ __| | . ` |/ _ \| __/ _ \/ __|
+               _| || (_) | | | | | (__  | |\  | (_) | ||  __/\__ \
+              |_____\___/|_| |_|_|\___| |_| \_|\___/ \__\___||___/
+
+             
+   Copyright [2021] [KurXZ] [https:github.com/kurxz]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+    http:www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.       
+-->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -19,22 +43,20 @@
   </ion-refresher>
 
   <div id="container">
-    <div *ngIf="notas >  0 ; else other_content">
-      <ion-row *ngFor="let item of lista">
+    <div *ngIf="notes >  0 ; else other_content">
+      <ion-row *ngFor="let item of listNotes">
         <ion-col>
-          <ion-item
-            (click)="visualizarDetalhes(item.id, item.titulo, item.texto)"
-          >
+          <ion-item (click)="viewDetails(item.id, item.title, item.text)">
             <ion-label>
-              {{ item.titulo }}
+              {{ item.title }}
 
-              <p>{{ item.texto }}</p>
+              <p>{{ item.text }}</p>
             </ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
     </div>
 
-    <ng-template #other_content> Nenhuma anotação encontrada </ng-template>
+    <ng-template #other_content>{{ 'translations.homePage.noNotes' | translate }} </ng-template>
   </div>
 </ion-content>

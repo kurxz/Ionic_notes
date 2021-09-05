@@ -1,0 +1,50 @@
+{ 
+    "translations": { 
+        "general": {
+            "yesAnswer": "Yes",
+            "noAnswer": "No",
+            "alert": "Alert!"
+        },
+        "homePage": {
+            "noNotes": "No notes found"
+        },
+        "sMenu": {
+            "homePage": "Home",
+            "newNote": "New note",
+            "settings": "Settings"
+        },
+        "newNotePage": {
+            "pageTitle": "Notes - Creating new Note",
+            "notesTitle": "Title",
+            "placeHolderTitle": "Your title",
+            "notesDescription": "Description",
+            "placeHolderDescription": "Your text here",
+            "backButton": "Back",
+            "saveButton": "Save"
+        },
+        "viewAndEditPage": {
+            "pageTitle": "Notes - View and Edit",
+            "notesTitle": "Title",
+            "placeHolderTitle": "Your title",
+            "notesDescription": "Description",
+            "placeHolderDescription": "Your text here",
+            "alertText": "Are you sure that you delete this note?",
+            "backButton": "Back",
+            "deleteButton": "Delete",
+            "saveButton": "Save"
+        },
+        "settingsPage": {
+            "pageTitle": "Notes - Settings",
+            "appOptions": "App Options",
+            "languageSelect": "Language",
+            "aboutTitle": "About",
+            "aboutText": "A simple project to learn the Ionic Framework",
+            "githubCode": "Code on Github",
+            "dangerZone": "Danger Zone",
+            "resetAppButton": "Reset app Database",
+            "resetText": "You are about to reset the database <p> <strong> All your notes will be lost </strong> </p> <p> Do you want to proceed? </p> ",
+            "contributorsText": "Contributors",
+            "langSetTo": "Language set to"
+        }
+    }
+}

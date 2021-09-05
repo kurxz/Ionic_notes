@@ -1,0 +1,93 @@
+<!--
+               _____            _        _   _       _            
+              |_   _|          (_)      | \ | |     | |           
+                | |  ___  _ __  _  ___  |  \| | ___ | |_ ___  ___ 
+                | | / _ \| '_ \| |/ __| | . ` |/ _ \| __/ _ \/ __|
+               _| || (_) | | | | | (__  | |\  | (_) | ||  __/\__ \
+              |_____\___/|_| |_|_|\___| |_| \_|\___/ \__\___||___/
+
+             
+   Copyright [2021] [KurXZ] [https:github.com/kurxz]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+    http:www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.       
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'translations.viewAndEditPage.pageTitle' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container">
+  <ion-item-divider> </ion-item-divider>
+  <ion-item>
+    <ion-label position="floating">{{ 'translations.viewAndEditPage.notesTitle' | translate }}</ion-label>
+    <ion-input placeholder="{{ 'translations.viewAndEditPage.placeHolderTitle' | translate }}" [(ngModel)]="newTitle">
+    </ion-input>
+  </ion-item>
+
+  <ion-item-divider> </ion-item-divider>
+
+  <ion-item>
+    <ion-label position="floating">{{ 'translations.viewAndEditPage.notesDescription' | translate }}</ion-label>
+    <ion-textarea placeholder="{{ 'translations.viewAndEditPage.placeHolderDescription' | translate }}" rows="18"
+      [(ngModel)]="newText" autocomplete="true">
+    </ion-textarea>
+  </ion-item>
+
+
+</div>
+
+<ion-content>
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-row class="ion-align-items-center">
+
+    <ion-col size="12" class="ion-text-center">
+      <ion-button size="small" color="danger" (click)="Delete()">
+        <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.viewAndEditPage.deleteButton' |
+        translate }}
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col class="ion-align-self-start">
+
+      <ion-button size="small" color="primary" (click)="homePage()">
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.backButton' |
+        translate }}
+      </ion-button>
+
+    </ion-col>
+
+    <ion-col size="4" size-lg class="ion-align-self-end">
+
+      <ion-button size="small" color="success" (click)="Update()">
+        <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.saveButton' | translate
+        }}
+      </ion-button>
+
+    </ion-col>
+
+  </ion-row>
+
+</ion-footer>

@@ -1,3 +1,27 @@
+<!--
+               _____            _        _   _       _            
+              |_   _|          (_)      | \ | |     | |           
+                | |  ___  _ __  _  ___  |  \| | ___ | |_ ___  ___ 
+                | | / _ \| '_ \| |/ __| | . ` |/ _ \| __/ _ \/ __|
+               _| || (_) | | | | | (__  | |\  | (_) | ||  __/\__ \
+              |_____\___/|_| |_|_|\___| |_| \_|\___/ \__\___||___/
+
+             
+   Copyright [2021] [KurXZ] [https:github.com/kurxz]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+    http:www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.       
+-->
+
 <ion-app>
   <ion-menu side="start" menuId="first" contentId="content1">
       <ion-header>
@@ -6,12 +30,24 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list *ngFor="let pages of navigate">
+        <ion-list >
           <ion-menu-toggle auto-hide="true">
-            <ion-item [routerLink]="pages.url" routerDirection="forward">
-                <ion-icon [name]="pages.icon" slot="start"></ion-icon>
-                   {{ pages.title }} 
+
+            <ion-item  [routerLink]="['/home']" routerDirection="forward">
+                <ion-icon name="home" slot="start"></ion-icon>
+                {{ 'translations.sMenu.homePage' | translate }}
             </ion-item>
+
+            <ion-item  [routerLink]="['/newNote']" routerDirection="forward">
+              <ion-icon name="add" slot="start"></ion-icon>
+              {{ 'translations.sMenu.newNote' | translate }}
+          </ion-item>
+
+          <ion-item [routerLink]="['/settings']" routerDirection="forward">
+            <ion-icon name="settings" slot="start"></ion-icon>
+            {{ 'translations.sMenu.settings' | translate }}
+        </ion-item>
+
           </ion-menu-toggle>
           </ion-list>
       </ion-content>

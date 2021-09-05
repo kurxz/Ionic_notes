@@ -12,16 +12,16 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'nota',
-    loadChildren: () => import('./nota/nota.module').then( m => m.NotaPageModule)
+    path: 'newNote',
+    loadChildren: () => import('./newNote/newNote.module').then( m => m.newNotePageModule)
   },
   {
-    path: 'visualizar',
-    loadChildren: () => import('./visualizar/visualizar.module').then( m => m.VisualizarPageModule)
+    path: 'viewAndEdit',
+    loadChildren: () => import('./viewAndEdit/viewAndEdit.module').then( m => m.viewAndEditPageeModule)
   },
   {
-    path: 'config',
-    loadChildren: () => import('./config/config.module').then( m => m.ConfigPageModule)
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.settingsPageModule)
   },
 ];
 

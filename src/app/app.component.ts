@@ -1,4 +1,6 @@
+import { LanguageService } from './services/languages.service';
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -8,33 +10,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   navigate : any;
-
-  constructor() {
- 
-    this.sideMenu();
-  }
-
-  sideMenu()
-  {
-    this.navigate =
-    [
-      {
-        title : "Início",
-        url   : "/home",
-        icon  : "home"
-      },
-      {
-        title : "Nova nota",
-        url   : "/nota",
-        icon  : "add"
-      },
-      {
-        title : "Configurações",
-        url   : "/config",
-        icon  : "settings"
-      },
-    ]
-  }
-
   
+   constructor(private LanguageService: LanguageService, public translate: TranslateService) {
+     
+    this.LanguageService.defaultLang();
+  
+  }
+
+
 }
