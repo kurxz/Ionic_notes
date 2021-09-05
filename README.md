@@ -1,3 +1,3 @@
 # Ionic_Notes
 
-Aplicativo para **android** de anotações utilizando o Ionic storage.
+**Android** app using Ionic Storage. With multilanguage support
