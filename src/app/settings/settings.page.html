@@ -34,11 +34,11 @@
 <ion-content>
   <ion-list>
     <ion-item>
-      <h2>{{ 'translations.settingsPage.appOptions' | translate }}</h2>
+      <h2>{{ 'translations.settingsPage.appOptions' | translate }}</h2> 
     </ion-item>
 
     <ion-item>
-      <ion-label>{{ 'translations.settingsPage.languageSelect' | translate }}</ion-label>
+       <ion-label>{{ 'translations.settingsPage.languageSelect' | translate }}</ion-label> <ion-icon name="language-outline"></ion-icon>
       <ion-select value="{{ this.langfromDB }}" (ionChange)="langSet($event)">
 
         <ion-select-option value="pt">Português Brasil</ion-select-option>
@@ -62,7 +62,7 @@
 
         <ion-item>
           <ion-label class="ion-text-wrap">
-            Ver: 1.2
+            Ver: 1.2.1
           </ion-label>
         </ion-item>
 
@@ -73,17 +73,17 @@
           <h2>Links</h2>
         </ion-item>
 
-        <ion-item href="https://github.com/kurxz/ionic_notes/">
-          <ion-label> {{ 'translations.settingsPage.githubCode' | translate }} </ion-label>
+        <ion-item href="https://github.com/kurxz/ionic_notes/">  
+          <ion-label> {{ 'translations.settingsPage.githubCode' | translate }} </ion-label> <ion-icon name="logo-github"></ion-icon> 
         </ion-item>
 
         <ion-item href="https://www.ionicframework.com">
-          <ion-label> Ionic Framework </ion-label>
+          <ion-label> Ionic Framework </ion-label> <ion-icon name="logo-ionic"></ion-icon>
         </ion-item>
 
         <ion-item>
           <ion-button color="primary" (click)="contributorsAlert()"> {{ 'translations.settingsPage.contributorsText' |
-            translate }} </ion-button>
+            translate }} </ion-button>  
         </ion-item>
 
       </ion-list>
@@ -97,7 +97,7 @@
 
       <ion-col>
         <ion-item>
-          <ion-button (click)="warningReset()" class="ion-text-wrap">
+          <ion-button color="danger" (click)="warningReset()" class="ion-text-wrap">
             {{ 'translations.settingsPage.resetAppButton' | translate }}
           </ion-button>
         </ion-item>

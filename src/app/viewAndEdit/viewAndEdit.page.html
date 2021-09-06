@@ -31,7 +31,10 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content> 
 <div class="container">
+
+  
   <ion-item-divider> </ion-item-divider>
   <ion-item>
     <ion-label position="floating">{{ 'translations.viewAndEditPage.notesTitle' | translate }}</ion-label>
@@ -43,51 +46,44 @@
 
   <ion-item>
     <ion-label position="floating">{{ 'translations.viewAndEditPage.notesDescription' | translate }}</ion-label>
-    <ion-textarea placeholder="{{ 'translations.viewAndEditPage.placeHolderDescription' | translate }}" rows="18"
+    <ion-textarea placeholder="{{ 'translations.viewAndEditPage.placeHolderDescription' | translate }}" rows="10"
       [(ngModel)]="newText" autocomplete="true">
     </ion-textarea>
   </ion-item>
 
-
 </div>
-
-<ion-content>
-
 </ion-content>
 
 <ion-footer>
-
-  <ion-row class="ion-align-items-center">
-
-    <ion-col size="12" class="ion-text-center">
-      <ion-button size="small" color="danger" (click)="Delete()">
-        <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.viewAndEditPage.deleteButton' |
-        translate }}
-      </ion-button>
-    </ion-col>
-
-  </ion-row>
-
-
-  <ion-row>
-    <ion-col class="ion-align-self-start">
-
+<ion-row style="display: flex;  justify-content: space-between;">
+  <div>
+  
       <ion-button size="small" color="primary" (click)="homePage()">
         <ion-icon name="chevron-back-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.backButton' |
         translate }}
       </ion-button>
+  
+  </div>
+  
+<div>
 
-    </ion-col>
+ 
+    <ion-button size="small" color="danger" (click)="Delete()">
+      <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.viewAndEditPage.deleteButton' |
+      translate }}
+    </ion-button>
 
-    <ion-col size="4" size-lg class="ion-align-self-end">
+</div>
 
-      <ion-button size="small" color="success" (click)="Update()">
-        <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.saveButton' | translate
-        }}
-      </ion-button>
 
-    </ion-col>
-
-  </ion-row>
+  <div>
+    <ion-button size="small" color="success" (click)="Update()">
+      <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.saveButton' | translate
+      }}
+    </ion-button>
+  </div>
+</ion-row>
+  
+ 
 
 </ion-footer>
