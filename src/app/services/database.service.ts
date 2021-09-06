@@ -100,11 +100,11 @@ export class DatabaseService {
    listAll() {
     let items: any = [];
 
-    this.storage.forEach(async (key, value, index) => {
+    this.storage.forEach( (key, value, index) => {
 
       if (value != "langCode") {
 
-        await this.storage.get(value).then((data) => {
+         this.storage.get(value).then((data) => {
           items.push({ title: data.title, text: data.text, id: value });
         });
 
