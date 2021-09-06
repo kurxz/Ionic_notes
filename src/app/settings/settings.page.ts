@@ -58,7 +58,7 @@ export class settingsPage implements OnInit {
 
   async ngOnInit() {
 
-    this.nonAsyncUpdateLangFromDB();
+    this.updateLangFromDB();
     await this.getTranslations();
 
   }
@@ -75,13 +75,6 @@ export class settingsPage implements OnInit {
     })
 
   }
-
- //Using this with ngOnInit will set current language on select option without show the langSet dialog everytime that pages load
-   nonAsyncUpdateLangFromDB() {
-     this.database.getLang().then(langCode => {
-     this.langfromDB = langCode
-   })
- }
 
   async doRefresh() {
 
