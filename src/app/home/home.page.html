@@ -98,8 +98,8 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-label *ngIf="item.list.myLists.length > 3 ; ">
-                  <ion-col size="1">
+                <ion-label  >
+                  <ion-col size="1" *ngIf="item.list.myLists.length > 3 ; ">
                     {{ 'translations.homePage.andOthers' | translate }}
                     <span style="font-weight: bold">
                       {{ item.list.myLists.length -3 }}
