@@ -21,44 +21,38 @@
    See the License for the specific language governing permissions and
    limitations under the License.    
 
-*/   
+*/
 
-import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Injectable } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 import { DatabaseService } from "../services/database.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LanguageService {
+  constructor(
+    private translate: TranslateService,
+    private database: DatabaseService
+  ) {}
 
-  constructor(private translate: TranslateService, private database: DatabaseService) {
+  async defaultLang() {
+    await this.database.getLang().then(async (langCode) => {
+    
+      if (langCode == null) {
+        let language = this.translate.getBrowserLang();      
+        this.translate.setDefaultLang(language);
 
-  }
-
-   async defaultLang() {
-
-    let language = this.translate.getBrowserLang();
-    this.translate.setDefaultLang(language);
-
-    await this.database.getLang().then(async langCode => {
-
-      if (langCode == "null") {
-
-        await this.setLanguage('en');
-
+       await this.setLanguage(language);
       } else {
         await this.setLanguage(langCode);
-
+        this.translate.setDefaultLang(langCode);
       }
-    })
-
+    });
   }
 
-   async setLanguage(langCode) {
+  async setLanguage(langCode) {
     this.translate.use(langCode);
     await this.database.setLang(langCode);
-
   }
-
 }

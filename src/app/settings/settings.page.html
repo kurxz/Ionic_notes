@@ -22,29 +22,33 @@
    limitations under the License.       
 -->
 
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ 'translations.settingsPage.pageTitle' | translate }}</ion-title>
+    <ion-title
+      >{{ 'translations.settingsPage.pageTitle' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+ 
   <ion-list>
     <ion-item>
-      <h2>{{ 'translations.settingsPage.appOptions' | translate }}</h2> 
+      <h2>{{ 'translations.settingsPage.appOptions' | translate }}</h2>
     </ion-item>
 
     <ion-item>
-       <ion-label>{{ 'translations.settingsPage.languageSelect' | translate }}</ion-label> <ion-icon name="language-outline"></ion-icon>
+      <ion-label
+        >{{ 'translations.settingsPage.languageSelect' | translate }}</ion-label
+      >
+      <ion-icon name="language-outline"></ion-icon>
       <ion-select value="{{ this.langfromDB }}" (ionChange)="langSet($event)">
-
         <ion-select-option value="pt">Português Brasil</ion-select-option>
         <ion-select-option value="en">English</ion-select-option>
         <ion-select-option value="es">Español</ion-select-option>
-
       </ion-select>
     </ion-item>
 
@@ -61,11 +65,8 @@
         </ion-item>
 
         <ion-item>
-          <ion-label class="ion-text-wrap">
-            Ver: 1.2.1
-          </ion-label>
+          <ion-label class="ion-text-wrap"> Ver: 1.3.0 </ion-label>
         </ion-item>
-
       </ion-list>
 
       <ion-list>
@@ -73,22 +74,25 @@
           <h2>Links</h2>
         </ion-item>
 
-        <ion-item href="https://github.com/kurxz/ionic_notes/">  
-          <ion-label> {{ 'translations.settingsPage.githubCode' | translate }} </ion-label> <ion-icon name="logo-github"></ion-icon> 
+        <ion-item href="https://github.com/kurxz/Ionic_notes/">
+          <ion-label>
+            {{ 'translations.settingsPage.githubCode' | translate }}
+          </ion-label>
+          <ion-icon name="logo-github"></ion-icon>
         </ion-item>
 
         <ion-item href="https://www.ionicframework.com">
-          <ion-label> Ionic Framework </ion-label> <ion-icon name="logo-ionic"></ion-icon>
+          <ion-label> Ionic Framework </ion-label>
+          <ion-icon name="logo-ionic"></ion-icon>
         </ion-item>
 
         <ion-item>
-          <ion-button color="primary" (click)="contributorsAlert()"> {{ 'translations.settingsPage.contributorsText' |
-            translate }} </ion-button>  
+          <ion-button color="primary" (click)="contributorsAlert()">
+            {{ 'translations.settingsPage.contributorsText' | translate }}
+          </ion-button>
         </ion-item>
-
       </ion-list>
     </ion-col>
-
 
     <ion-list>
       <ion-item>
@@ -97,15 +101,15 @@
 
       <ion-col>
         <ion-item>
-          <ion-button color="danger" (click)="warningReset()" class="ion-text-wrap">
+          <ion-button
+            color="danger"
+            (click)="warningReset()"
+            class="ion-text-wrap"
+          >
             {{ 'translations.settingsPage.resetAppButton' | translate }}
           </ion-button>
         </ion-item>
       </ion-col>
     </ion-list>
-
-
   </ion-list>
-
-
 </ion-content>

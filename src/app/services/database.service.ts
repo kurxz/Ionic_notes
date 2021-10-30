@@ -21,7 +21,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.    
 
-*/   
+*/
 
 import { Injectable } from "@angular/core";
 import { Storage, IonicStorageModule } from "@ionic/storage-angular";
@@ -42,45 +42,37 @@ export class DatabaseService {
 
   async init() {
     IonicStorageModule.forRoot();
-    // If using, define drivers here: await this.storage.defineDriver(/*...);
-    const storage = await this.storage.create();
 
+    const storage = await this.storage.create();
     this._storage = storage;
   }
 
   notesNumber: number;
 
-   async Insert(key, dados) {
-
+  async Insert(key, data) {
     try {
-      this.storage.set(key, dados);
+      this.storage.set(key, data);
     } catch (error) {
-
       const toast = await this.toastController.create({
         message: "Error",
-        duration: 2000,
+        duration: 1000,
       });
       toast.present();
     }
   }
 
-   async Find(id) {
-
+  async Find(id) {
     let items: any = [];
     await this.storage.get(id).then(async (data) => {
-
       if (id != "langCode") {
         await items.push({ title: data.title, text: data.text });
-
       }
-
     });
 
     return items;
   }
 
-   async notesCount() {
-
+  async notesCount() {
     var notesCounter;
     await this.storage.length().then(async (result) => {
       notesCounter = result;
@@ -89,37 +81,46 @@ export class DatabaseService {
     return notesCounter;
   }
 
-
-   async returnNotesCount() {
-
+  async returnNotesCount() {
     const result = await this.notesCount();
     return result;
-
   }
 
-   listAll() {
+  listAll() {
     let items: any = [];
 
-    this.storage.forEach( (key, value, index) => {
-
+    this.storage.forEach((key, value, index) => {
       if (value != "langCode") {
-
-         this.storage.get(value).then((data) => {
+        this.storage.get(value).then((data) => {
+          //console.log("DATA" + data.text)
+          if (data.text == "") {
+            items.push({ text: data.list, id: value });
+          }
           items.push({ title: data.title, text: data.text, id: value });
         });
-
       }
     });
     return items;
   }
 
-   async Delete(key) {
+  showList() {
+    let list: any = [];
+
+    this.storage.forEach((key, value, index) => {
+      if (value != "langCode") {
+        this.storage.get(value).then((data) => {
+
+          list.push({ list: data, id: value });
+        });
+      }
+    });
+    return list;
+  }
+
+  async Delete(key) {
     try {
-
       await this.storage.remove(key);
-
     } catch (error) {
-
       const toast = await this.toastController.create({
         message: "Error",
         duration: 2000,
@@ -128,13 +129,12 @@ export class DatabaseService {
     }
   }
 
-   async Update(key, dados) {
-    await this.storage.set(key, dados);
+  async Update(key, data) {
+    await this.storage.set(key, data);
   }
 
- async resetDatabase() {
+  async resetDatabase() {
     try {
-
       this.storage.clear();
 
       const toast = await this.toastController.create({
@@ -143,26 +143,22 @@ export class DatabaseService {
       });
 
       toast.present();
-
     } catch (error) {
       const toast = await this.toastController.create({
         message: "Error",
-        duration: 2000,
+        duration: 1000,
       });
       toast.present();
     }
   }
 
-   async setLang(langCode) {
-
-    await this.storage.set('langCode', langCode);
-
+  async setLang(langCode) {
+    await this.storage.set("langCode", langCode);
   }
 
   async getLang() {
-    return this.storage.get('langCode').then(language => {
+    return this.storage.get("langCode").then((language) => {
       return language;
     });
   }
-
 }

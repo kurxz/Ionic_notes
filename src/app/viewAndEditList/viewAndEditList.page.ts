@@ -25,24 +25,24 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { formatDate } from "@angular/common";
-import { NavController } from "@ionic/angular";
 import { AlertController } from "@ionic/angular";
-import { TranslateService } from "@ngx-translate/core";
 import { DatabaseService } from "../services/database.service";
+import { formatDate } from "@angular/common";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: "app-visualizar",
-  templateUrl: "./viewAndEdit.page.html",
-  styleUrls: ["./viewAndEdit.page.scss"],
+  selector: "app-viewAndEditList",
+  templateUrl: "./viewAndEditList.page.html",
+  styleUrls: ["./viewAndEditList.page.scss"],
 })
-export class viewAndEditPage implements OnInit {
+export class ViewAndEditListPage implements OnInit {
   data: any;
-  id: number = null;
-  newTitle: string;
-  newText: string;
-  created: any;
-  edited: string = null;
+  id: number;
+  oldList: any;
+  list: any = null;
+  title: string;
+
+  created: Date;
 
   yesAnswer: string;
   noAnswer: string;
@@ -52,12 +52,30 @@ export class viewAndEditPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private database: DatabaseService,
-    private navCtrl: NavController,
     private alertController: AlertController,
+    private database: DatabaseService,
     private translate: TranslateService
   ) {
     this.getTranslations();
+  }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(async (params) => {
+      if (this.router.getCurrentNavigation().extras.state != null) {
+        this.data = null;
+        this.data = this.router.getCurrentNavigation().extras.state.data;
+
+        this.id = this.data.id;
+        this.created = this.data.created;
+        this.oldList = this.data.list;
+        this.title = this.oldList.title;
+        this.created = this.data.list.createdat;
+
+        await this.oldListToNew();
+      } else {
+        this.goToHomePage();
+      }
+    });
   }
 
   async getTranslations() {
@@ -78,23 +96,64 @@ export class viewAndEditPage implements OnInit {
       });
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      if (this.router.getCurrentNavigation().extras.state != null) {
-        this.data = this.router.getCurrentNavigation().extras.state.data;
-        this.id = this.data.id;
-        this.newTitle = this.data.note.title;
-        this.newText = this.data.note.text;
-        this.created = this.data.note.createdat;
-        this.edited = this.data.note.edited;
-      } else {
-        this.navCtrl.navigateForward("/home");
-      }
-    });
+  async oldListToNew() {
+    this.list = [];
+
+    var arraySize = this.oldList.myLists.length;
+
+    for (var i = 0; i < arraySize; i++) {
+      this.list.push({
+        item: this.oldList.myLists[i].item,
+        isDone: this.oldList.myLists[i].isDone,
+      });
+    }
+  }
+
+  async filterEntry() {
+    var filteredEntries = this.list.filter(this.deleteEmptyEntry);
+    this.list = filteredEntries;
+  }
+
+  deleteEmptyEntry(obj) {
+    if ("item" in obj && typeof obj.item === "string" && obj.item !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Add() {
+    this.list.push({ item: "", isDone: false });
+  }
+
+  RemoveItem(index) {
+    this.list.splice(index, 1);
   }
 
   goToHomePage() {
     this.router.navigate(["/home"]);
+  }
+
+  async Update() {
+    var arrayLength = this.list.length;
+
+    if (arrayLength > 0) {
+      await this.filterEntry();
+
+      let editedNow = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
+      let data = {
+        title: this.title,
+        myLists: this.list,
+        createdat: this.created,
+        edited: editedNow,
+      };
+
+      await this.database.Insert(this.id, data);
+
+      this.goToHomePage();
+    } else {
+      this.msgAlertOK("VAZIO INSIRA");
+    }
   }
 
   async Delete() {
@@ -112,7 +171,7 @@ export class viewAndEditPage implements OnInit {
           text: this.yesAnswer,
           handler: () => {
             this.database.Delete(this.id);
-            this.navCtrl.navigateForward("/home");
+            this.goToHomePage();
           },
         },
       ],
@@ -121,16 +180,14 @@ export class viewAndEditPage implements OnInit {
     await alert.present();
   }
 
-  async Update() {
-    let editedNow = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
+  async msgAlertOK(message) {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Alert",
+      message: message,
+      buttons: ["OK"],
+    });
 
-    let data = {
-      title: this.newTitle,
-      text: this.newText,
-      createdat: this.created,
-      edited: editedNow,
-    };
-    this.database.Update(this.id, data);
-    this.navCtrl.navigateForward("/home");
+    await alert.present();
   }
 }

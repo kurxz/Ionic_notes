@@ -21,11 +21,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.    
 
-*/   
+*/
 
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { DatabaseService } from "../services/database.service";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-nota",
@@ -33,25 +34,28 @@ import { DatabaseService } from "../services/database.service";
   styleUrls: ["./newNote.page.scss"],
 })
 export class newNote implements OnInit {
-
   text;
   title;
   day: number = Date.now();
 
-  constructor(private route: Router, public database: DatabaseService) { }
+  constructor(private route: Router, public database: DatabaseService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   homePage() {
     this.route.navigate(["/home"]);
   }
 
   async save() {
+    if (this.text == undefined) {
+    } else {
+      
+      let today = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
+      let data = { title: this.title, text: this.text, createdat: today };
 
-    let data = { title: this.title, text: this.text };
+      await this.database.Insert(this.day, data);
 
-    this.database.Insert(this.day, data);
-
-    this.homePage();
+      this.homePage();
+    }
   }
 }

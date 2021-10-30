@@ -21,13 +21,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.    
 
-*/   
+*/
 
 import { DatabaseService } from "../services/database.service";
 import { Component } from "@angular/core";
-import { ActionSheetController, MenuController } from "@ionic/angular";
 import { Router, NavigationExtras } from "@angular/router";
-import { LanguageService } from '../services/languages.service'
+import { TranslateService } from "@ngx-translate/core";
+import { LanguageService } from "../services/languages.service";
 
 @Component({
   selector: "app-home",
@@ -35,47 +35,45 @@ import { LanguageService } from '../services/languages.service'
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
+  listNotes: any[];
+  showList: any[];
 
-  listNotes = [];
   notes;
 
   constructor(
-    public actionSheetController: ActionSheetController,
     private route: Router,
-    public database: DatabaseService,
-    public menuCtrl: MenuController,
-    public languageservice: LanguageService
-  ) { }
+    private database: DatabaseService,
+
+    private languageservice: LanguageService,
+    public translate: TranslateService
+  ) {}
 
   async listAll() {
-
     this.listNotes = await this.database.listAll();
+    this.listNotes = await this.database.showList();
 
     let x = await this.database.returnNotesCount();
+
     if (x == 0 || x == undefined || x == 1) {
-
       this.notes = 0;
-
     } else {
-
       this.notes = 1;
     }
   }
 
-  ngOnInit() { }
+  async ngOnInit() {}
 
   ionViewWillEnter() {
     this.languageservice.defaultLang();
     this.listAll();
-
   }
 
-  viewDetails(id, title, text) {
-    
-    var info = {
+  viewDetails(id, item) {
+    var info = null;
+
+    info = {
       id: id,
-      title: title,
-      text: text,
+      note: item,
     };
 
     let navigationExtras: NavigationExtras = {
@@ -87,14 +85,32 @@ export class HomePage {
     this.route.navigate(["viewAndEdit"], navigationExtras);
   }
 
+  viewDetailsOfList(id, list) {
+    var info = null;
+
+    info = {
+      id: id,
+      list: list,
+    };
+
+    let navigationExtras: NavigationExtras = null;
+
+    navigationExtras = {
+      state: {
+        data: info,
+      },
+    };
+
+    this.route.navigate(["viewAndEditList"], navigationExtras);
+    navigationExtras = null;
+  }
+
   doRefresh(event) {
     this.listAll();
 
     this.languageservice.defaultLang();
     setTimeout(() => {
-
       event.target.complete();
     }, 2000);
   }
-
 }

@@ -63,4 +63,7 @@ export function Translations(http: HttpClient){
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
+
+ 
+
 export class AppModule {}

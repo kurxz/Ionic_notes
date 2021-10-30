@@ -58,8 +58,8 @@ export class settingsPage implements OnInit {
 
   async ngOnInit() {
 
-    this.updateLangFromDB();
     await this.getTranslations();
+    await this.updateLangFromDB();
 
   }
 
@@ -186,6 +186,8 @@ export class settingsPage implements OnInit {
 
     }
 
+if(this.langfromDB != langcode) {
+
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: this.alert,
@@ -198,6 +200,6 @@ export class settingsPage implements OnInit {
     await alert.onDidDismiss();
 
   }
-
+  }
 
 }

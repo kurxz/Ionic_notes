@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title
+      >{{ 'translations.newListPage.pageTitle' | translate }}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">
+      {{ 'translations.notesPagesGeneral.notesTitle' | translate }}
+    </ion-label>
+    <ion-input
+      placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}"
+      [(ngModel)]="title"
+    >
+    </ion-input>
+  </ion-item>
+
+  <ion-item-divider> </ion-item-divider>
+
+  <ion-item *ngFor="let att of list; let idx = index" class="item-text-wrap">
+    <ion-col size="1">
+      <ion-checkbox [(ngModel)]="list[idx].isDone"></ion-checkbox>
+    </ion-col>
+
+    <ion-input
+      placeholder="{{ 'translations.notesPagesGeneral.inputPlaceHolder' |
+    translate }}"
+      type="text"
+      text-right
+      required
+      [(ngModel)]="list[idx].item"
+    ></ion-input>
+
+    <ion-button color="danger" (click)="RemoveItem(idx)">X</ion-button>
+  </ion-item>
+
+  <ion-fab slot="fixed" class="buttonAlign">
+    <ion-fab-button (click)="Add()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <ion-button color="primary" (click)="goToHomePage()">
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>{{
+        'translations.notesPagesGeneral.backButton' | translate }}
+      </ion-button>
+    </ion-col>
+    <ion-col> </ion-col>
+
+    <ion-col>
+      <ion-button color="success" (click)="saveButton()" type="submit">
+        {{ 'translations.notesPagesGeneral.saveButton' | translate }}
+        <ion-icon name="add-outline" slot="end"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

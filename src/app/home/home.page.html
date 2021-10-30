@@ -31,7 +31,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="has-header" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Notes</ion-title>
@@ -43,20 +43,88 @@
   </ion-refresher>
 
   <div id="container">
-    <div *ngIf="notes >  0 ; else other_content">
-      <ion-row *ngFor="let item of listNotes">
-        <ion-col>
-          <ion-item (click)="viewDetails(item.id, item.title, item.text)">
-            <ion-label>
-              {{ item.title }}
+    <div>
+      <div *ngIf="notes >  0 ; else other_content">
+        <ion-row *ngFor="let item of listNotes">
+          <ion-col>
+            <div *ngIf="item.list.text != null  ; else isList">
+              <ion-card>
+                <ion-item
+                  (click)="viewDetails(item.id, item.list)"
+                >
+                  <ion-label>
+                    {{ item.list.title }}
 
-              <p>{{ item.text }}</p>
-            </ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+                    <p>{{ item.list.text }}</p>
+                  </ion-label>
+                </ion-item>
+
+                <ion-label *ngIf="item.list.createdat != null" class="ion-text-center">
+                  {{ 'translations.notesPagesGeneral.created' | translate }}: {{ item.list.createdat }}
+                </ion-label>
+              </ion-card>
+            </div>
+
+            <ng-template #isList>
+              <ion-card (click)="viewDetailsOfList(item.id, item.list)">
+                <ion-item>
+                  <ion-label>
+                    {{ item.list.title }}
+
+                    <div *ngFor="let arrayList of item.list.myLists">
+                      <div float-left class="checkboxStyle">
+                        <ion-checkbox
+                          item-right
+                          checked="{{ arrayList.isDone }}"
+                        >
+                        </ion-checkbox>
+
+                        <div *ngIf="arrayList.isDone == true ; else notDone">
+                          <ion-label style="text-decoration: line-through">
+                            <ion-col size="1"> </ion-col>
+
+                            {{ arrayList.item }}
+                          </ion-label>
+                        </div>
+
+                        <ng-template #notDone>
+                          <ion-label>
+                            <ion-col size="1"> </ion-col>
+                            {{ arrayList.item }}
+                          </ion-label>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </ion-label>
+                </ion-item>
+
+                <ion-label *ngIf="item.list.myLists.length > 3 ; ">
+                  <ion-col size="1">
+                    {{ 'translations.homePage.andOthers' | translate }}
+                    <span style="font-weight: bold">
+                      {{ item.list.myLists.length -3 }}
+                    </span>
+                    -
+                  </ion-col>
+                  {{ 'translations.notesPagesGeneral.created' | translate }}: {{
+                  item.list.createdat }}
+                </ion-label>
+              </ion-card>
+            </ng-template>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ng-template #other_content  >
+       
+    <div class="noNotes"> 
+
+      {{ 'translations.homePage.noNotes' | translate }}    
+ 
+
     </div>
-
-    <ng-template #other_content>{{ 'translations.homePage.noNotes' | translate }} </ng-template>
+        
+      </ng-template>
+    </div>
   </div>
 </ion-content>

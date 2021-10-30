@@ -1,0 +1,114 @@
+<!-- 
+               _____            _        _   _       _            
+              |_   _|          (_)      | \ | |     | |           
+                | |  ___  _ __  _  ___  |  \| | ___ | |_ ___  ___ 
+                | | / _ \| '_ \| |/ __| | . ` |/ _ \| __/ _ \/ __|
+               _| || (_) | | | | | (__  | |\  | (_) | ||  __/\__ \
+              |_____\___/|_| |_|_|\___| |_| \_|\___/ \__\___||___/
+
+             
+   Copyright [2021] [KurXZ] [https:github.com/kurxz]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+    http:www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.    
+
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title
+      >{{ 'translations.viewAndEditList.pageTitle' | translate }}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input
+      placeholder="{{ 'translations.notesPagesGeneral.titlePlaceHolder' | translate }} "
+      [(ngModel)]="title"
+    >
+    </ion-input>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-start">
+          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ created
+          }}
+        </div>
+      </ion-col>
+      <ion-col> </ion-col>
+      <ion-col *ngIf="data.list.edited != null">
+        <div class="ion-text-center">
+          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{
+          data.list.edited }}
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-item-divider>
+
+  <ion-item *ngFor="let att of list; let idx = index" class="item-text-wrap">
+    <ion-col size="1">
+      <ion-checkbox [(ngModel)]="list[idx].isDone"></ion-checkbox>
+    </ion-col>
+
+    <ion-input
+      *ngIf="list[idx].isDone == true ; else itemIsNotDone"
+      style="text-decoration: line-through"
+      placeholder="LISTA"
+      type="text"
+      text-right
+      required
+      [(ngModel)]="list[idx].item"
+    ></ion-input>
+
+    <ng-template #itemIsNotDone>
+      <ion-input
+        placeholder="{{ 'translations.notesPagesGeneral.inputPlaceHolder | translate }}"
+        type="text"
+        text-right
+        required
+        [(ngModel)]="list[idx].item"
+      ></ion-input>
+    </ng-template>
+
+    <ion-button color="danger" (click)="RemoveItem(idx)">X</ion-button>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-row style="display: flex; justify-content: space-between">
+    <div>
+      <ion-button size="small" color="primary" (click)="goToHomePage()">
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>{{
+        'translations.notesPagesGeneral.backButton' | translate }}
+      </ion-button>
+    </div>
+
+    <div>
+      <ion-button size="small" color="danger" (click)="Delete()">
+        <ion-icon name="close-outline" slot="start"></ion-icon>{{
+        'translations.notesPagesGeneral.deleteButton' | translate }}
+      </ion-button>
+    </div>
+
+    <div>
+      <ion-button size="small" color="success" (click)="Update()"
+        >{{ 'translations.notesPagesGeneral.saveButton' | translate }}
+        <ion-icon name="add-outline" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-row>
+</ion-footer>

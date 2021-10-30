@@ -23,34 +23,29 @@
 -->
 
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="content1">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content>
-        <ion-list >
-          <ion-menu-toggle auto-hide="true">
+  
+  <ion-router-outlet id="content1"></ion-router-outlet>
+  <div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
 
-            <ion-item  [routerLink]="['/home']" routerDirection="forward">
-                <ion-icon name="home" slot="start"></ion-icon>
-                {{ 'translations.sMenu.homePage' | translate }}
-            </ion-item>
+      <ion-tab-button tab="home" >
+        <ion-icon name="home"></ion-icon>
+        <ion-label>{{ 'translations.sMenu.homePage' | translate }}</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button  (click)="ActionSheetMenu()">
+        <ion-icon name="chevron-up-outline"></ion-icon>
+        <ion-label>{{ 'translations.sMenu.newItem' | translate }}</ion-label>
+      </ion-tab-button>
+  
+   
+      <ion-tab-button tab="settings" >
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>{{ 'translations.sMenu.settings' | translate }}</ion-label>
+      </ion-tab-button>
 
-            <ion-item  [routerLink]="['/newNote']" routerDirection="forward">
-              <ion-icon name="add" slot="start"></ion-icon>
-              {{ 'translations.sMenu.newNote' | translate }}
-          </ion-item>
-
-          <ion-item [routerLink]="['/settings']" routerDirection="forward">
-            <ion-icon name="settings" slot="start"></ion-icon>
-            {{ 'translations.sMenu.settings' | translate }}
-        </ion-item>
-
-          </ion-menu-toggle>
-          </ion-list>
-      </ion-content>
-    </ion-menu>
-<ion-router-outlet id="content1"></ion-router-outlet>
+    </ion-tab-bar>
+  </ion-tabs>
+</div>
 </ion-app>

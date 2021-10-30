@@ -1,50 +1,61 @@
 {
-    "translations": {
-        "general": {
-            "yesAnswer": "Sim",
-            "noAnswer": "Não",
-            "alert": "Alerta"
-        },
-        "homePage": {
-            "noNotes": "Nenhuma anotação encontrada"
-        },
-        "sMenu": {
-            "homePage": "Início",
-            "newNote": "Nova nota",
-            "settings": "Configurações"
-        },
-        "newNotePage": {
-            "pageTitle": "Notes - Criando uma nova anotação",
-            "notesTitle": "Título",
-            "placeHolderTitle": "Seu título aqui",
-            "notesDescription": "Descrição",
-            "placeHolderDescription": "Insira seu texto aqui",          
-            "backButton": "Retornar",
-            "saveButton": "Salvar"
-        },
-        "viewAndEditPage": {
-            "pageTitle": "Notes - Vizualizar e Editar",
-            "notesTitle": "Título",
-            "placeHolderTitle": "Seu título aqui",
-            "notesDescription": "Descrição",
-            "placeHolderDescription": "Insira seu texto aqui",
-            "alertText": "Tem certeza que deseja deletar esta nota?",
-            "backButton": "Retornar",
-            "deleteButton": "Deletar",
-            "saveButton": "Salvar"
-        },
-        "settingsPage": {
-            "pageTitle": "Notes - Configurações",
-            "appOptions": "Opções de aplicativo",
-            "languageSelect": "Idioma",
-            "aboutTitle": "Sobre",
-            "aboutText": "Um simples projeto para aprender o Ionic Framework",
-            "githubCode": "Código no Github",
-            "dangerZone": "Zona de perigo",
-            "resetAppButton": "Resetar banco de dados",
-            "resetText": "Você está prestes a resetar o banco de dados. <p> <strong>Todas suas anotações serão perdidas </strong> </p> <p> Deseja prosseguir? </p>",
-            "contributorsText": "Contribuidores",
-            "langSetTo": "Idioma alterado para"
-        }
+  "translations": {
+    "general": {
+      "yesAnswer": "Sim",
+      "noAnswer": "Não",
+      "alert": "Alerta",
+      "add": "Adicionar",
+      "cancel": "Cancelar"
+    },
+    "homePage": {
+      "noNotes": "Nenhuma anotação encontrada",
+      "andOthers": "E outros"
+    },
+    "sMenu": {
+      "homePage": "Início",
+      "newNote": "Nova Nota",
+      "newList": "Nova Lista",
+      "newItem": "Novo Item",
+      "settings": "Configurações"
+    },
+    "notesPagesGeneral": {
+      "notesTitle": "Título",
+      "placeHolderTitle": "Seu título aqui",
+      "notesDescription": "Descrição",
+      "placeHolderDescription": "Insira seu texto aqui",
+      "inputPlaceHolder": "Seu item?",
+      "backButton": "Retornar",
+      "deleteButton": "Deletar",
+      "saveButton": "Salvar",
+      "created": "Criado em",
+      "edited": "Editado"
+    },
+    "newNotePage": {
+      "pageTitle": "Notes - Criando uma nova anotação"
+    },
+    "viewAndEditPage": {
+      "pageTitle": "Notes - Vizualizar e Editar",
+      "alertText": "Tem certeza que deseja deletar esta nota?"
+    },
+    "newListPage": {
+      "pageTitle": "Notes - Criando nova lista",
+      "emptyList": "Sua lista está vazia"
+    },
+    "viewAndEditList": {
+      "pageTitle": "Notes - Vizualizar e Editar"
+    },
+    "settingsPage": {
+      "pageTitle": "Notes - Configurações",
+      "appOptions": "Opções de aplicativo",
+      "languageSelect": "Idioma",
+      "aboutTitle": "Sobre",
+      "aboutText": "Um simples projeto usando o Ionic Framework",
+      "githubCode": "Código no Github",
+      "dangerZone": "Zona de perigo",
+      "resetAppButton": "Resetar banco de dados",
+      "resetText": "Você está prestes a resetar o banco de dados. <p> <strong>Todas suas anotações serão perdidas </strong> </p> <p> Deseja prosseguir? </p>",
+      "contributorsText": "Contribuidores",
+      "langSetTo": "Idioma alterado para"
     }
+  }
 }

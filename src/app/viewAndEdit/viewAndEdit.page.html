@@ -33,20 +33,44 @@
 
 <ion-content> 
 <div class="container">
-
   
-  <ion-item-divider> </ion-item-divider>
+  <ion-item-divider> 
+  
+   
+  </ion-item-divider>
+
   <ion-item>
-    <ion-label position="floating">{{ 'translations.viewAndEditPage.notesTitle' | translate }}</ion-label>
-    <ion-input placeholder="{{ 'translations.viewAndEditPage.placeHolderTitle' | translate }}" [(ngModel)]="newTitle">
+    <ion-label position="floating">{{ 'translations.notesPagesGeneral.notesTitle' | translate }}</ion-label>
+    <ion-input placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}" [(ngModel)]="newTitle">
     </ion-input>
   </ion-item>
 
-  <ion-item-divider> </ion-item-divider>
+  <ion-item-divider> 
+
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-start">
+          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ created }}
+        </div>
+      </ion-col>
+      <ion-col> </ion-col>
+  
+      <ion-col *ngIf="edited != null">
+        <div class="ion-text-center">
+          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{ edited }}
+        </div>
+        
+      </ion-col>
+  
+    </ion-row>  
+    
+
+
+  </ion-item-divider>
 
   <ion-item>
-    <ion-label position="floating">{{ 'translations.viewAndEditPage.notesDescription' | translate }}</ion-label>
-    <ion-textarea placeholder="{{ 'translations.viewAndEditPage.placeHolderDescription' | translate }}" rows="10"
+    <ion-label position="floating">{{ 'translations.notesPagesGeneral.notesDescription' | translate }}</ion-label>
+    <ion-textarea placeholder="{{ 'translations.notesPagesGeneral.placeHolderDescription' | translate }}" rows="10"
       [(ngModel)]="newText" autocomplete="true">
     </ion-textarea>
   </ion-item>
@@ -58,8 +82,8 @@
 <ion-row style="display: flex;  justify-content: space-between;">
   <div>
   
-      <ion-button size="small" color="primary" (click)="homePage()">
-        <ion-icon name="chevron-back-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.backButton' |
+      <ion-button size="small" color="primary" (click)="goToHomePage()" >
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon> {{ 'translations.notesPagesGeneral.backButton' |
         translate }}
       </ion-button>
   
@@ -69,7 +93,7 @@
 
  
     <ion-button size="small" color="danger" (click)="Delete()">
-      <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.viewAndEditPage.deleteButton' |
+      <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.notesPagesGeneral.deleteButton' |
       translate }}
     </ion-button>
 
@@ -78,7 +102,7 @@
 
   <div>
     <ion-button size="small" color="success" (click)="Update()">
-      <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.viewAndEditPage.saveButton' | translate
+      <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.notesPagesGeneral.saveButton' | translate
       }}
     </ion-button>
   </div>

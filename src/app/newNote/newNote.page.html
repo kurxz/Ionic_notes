@@ -27,7 +27,11 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title > <div class="ion-text-wrap"> {{ 'translations.newNotePage.pageTitle' | translate }} </div> </ion-title>
+    <ion-title>
+      <div class="ion-text-wrap">
+        {{ 'translations.newNotePage.pageTitle' | translate }}
+      </div>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -37,17 +41,27 @@
       <ion-item-divider> </ion-item-divider>
 
       <ion-item>
-        <ion-label position="floating">{{ 'translations.newNotePage.notesTitle' | translate }}</ion-label>
-        <ion-input placeholder="{{ 'translations.newNotePage.placeHolderTitle' | translate }}" [(ngModel)]="title">
+        <ion-label position="floating"
+          >{{ 'translations.notesPagesGeneral.notesTitle' | translate }}</ion-label
+        >
+        <ion-input
+          placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}"
+          [(ngModel)]="title"
+        >
         </ion-input>
       </ion-item>
 
       <ion-item-divider> </ion-item-divider>
 
       <ion-item>
-        <ion-label position="floating">{{ 'translations.newNotePage.notesDescription' | translate }}</ion-label>
-        <ion-textarea placeholder="{{ 'translations.newNotePage.placeHolderDescription' | translate }}" rows="10"
-          [(ngModel)]="text"></ion-textarea>
+        <ion-label position="floating"
+          > {{ 'translations.notesPagesGeneral.notesDescription' | translate }}
+        </ion-label>
+        <ion-textarea
+          placeholder="{{ 'translations.notesPagesGeneral.placeHolderDescription' | translate }}"
+          rows="10"
+          [(ngModel)]="text"
+        ></ion-textarea>
       </ion-item>
     </ion-col>
   </ion-row>
@@ -57,14 +71,15 @@
   <ion-row>
     <ion-col size="6">
       <ion-button color="primary" (click)="homePage()">
-        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>{{ 'translations.newNotePage.backButton' |
-        translate }}
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>{{
+        'translations.notesPagesGeneral.backButton' | translate }}
       </ion-button>
     </ion-col>
     <ion-col> </ion-col>
     <ion-col>
-      <ion-button color="primary" (click)="save()">
-        <ion-icon name="add-outline" slot="start"></ion-icon> {{ 'translations.newNotePage.saveButton' | translate }}
+      <ion-button color="success" (click)="save()">
+        <ion-icon name="add-outline" slot="end"></ion-icon> {{
+        'translations.notesPagesGeneral.saveButton' | translate }}
       </ion-button>
     </ion-col>
   </ion-row>

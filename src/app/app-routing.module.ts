@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.settingsPageModule)
   },
+  {
+    path: 'newList',
+    loadChildren: () => import('./newList/newList.module').then( m => m.NewListPageModule)
+  },
+  {
+    path: 'viewAndEditList',
+    loadChildren: () => import('./viewAndEditList/viewAndEditList.module').then( m => m.ViewAndEditListPageModule)
+  },
 ];
 
 @NgModule({
