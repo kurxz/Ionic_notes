@@ -28,6 +28,7 @@ import { Component } from "@angular/core";
 import { Router, NavigationExtras } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { LanguageService } from "../services/languages.service";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-home",
@@ -35,11 +36,11 @@ import { LanguageService } from "../services/languages.service";
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
+  
   listNotes: any[];
   showList: any[];
 
-  notes;
-
+  notes
   constructor(
     private route: Router,
     private database: DatabaseService,
@@ -49,12 +50,13 @@ export class HomePage {
   ) {}
 
   async listAll() {
+    
     this.listNotes = await this.database.listAll();
     this.listNotes = await this.database.showList();
 
-    let x = await this.database.returnNotesCount();
-
-    if (x == 0 || x == undefined || x == 1) {
+    let amoutOfItems = await this.database.returnNotesCount();
+    
+    if (amoutOfItems == 0 || amoutOfItems == undefined || amoutOfItems == 1) {
       this.notes = 0;
     } else {
       this.notes = 1;
@@ -62,6 +64,7 @@ export class HomePage {
   }
 
   async ngOnInit() {}
+
 
   ionViewWillEnter() {
     this.languageservice.defaultLang();
@@ -81,8 +84,9 @@ export class HomePage {
         data: info,
       },
     };
-
+     
     this.route.navigate(["viewAndEdit"], navigationExtras);
+    navigationExtras = null;
   }
 
   viewDetailsOfList(id, list) {
@@ -113,4 +117,10 @@ export class HomePage {
       event.target.complete();
     }, 2000);
   }
+
+  countSinceDate(date){
+    var result = moment(date).fromNow();
+    return result;
+  }
+
 }

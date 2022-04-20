@@ -2,18 +2,20 @@ import { Component, OnInit } from "@angular/core";
 import { AlertController } from "@ionic/angular";
 import { DatabaseService } from "../services/database.service";
 import { Router } from "@angular/router";
-import { formatDate } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
+
 
 @Component({
   selector: "app-newList",
   templateUrl: "./newList.page.html",
   styleUrls: ["./newList.page.scss"],
 })
+
 export class NewListPage implements OnInit {
+
   list: any = [];
-  day: number = Date.now();
   title: string;
+  emptyListTranslation: string;
 
   constructor(
     public alertController: AlertController,
@@ -22,16 +24,22 @@ export class NewListPage implements OnInit {
     public translate: TranslateService
   ) {}
 
-  async ngOnInit() {
-  
-  }
+async ngOnInit() {
 
-async ionViewWillEnter(){
-  await this.getTranslations();
-  console.log(this.emptyListTranslation)
+
 }
 
-  emptyListTranslation: string;
+async ionViewWillEnter() {
+  await this.getTranslations();
+  this.title = null;
+}
+
+async ngOnDestroy(){
+
+  delete this.list;
+  delete this.title
+
+}
 
   async getTranslations() {
     await this.translate
@@ -56,19 +64,20 @@ async ionViewWillEnter(){
   }
 
   async saveButton() {
+    
     await this.filterEntry();
     var arrayLength = this.list.length;
 
     if (arrayLength > 0) {
-      console.log(this.list);
-
-      let today = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
-      let data = { title: this.title, myLists: this.list, createdat: today };
-
-      await this.database.Insert(this.day, data);
+  
+      let data = { title: this.title, myLists: this.list, createdat: Date.now() };
+      await this.database.Insert(Date.now(), data);
       this.list = [];
+      data = null
       this.goToHomePage();
+
     } else {
+      
       this.msgAlertOK(this.emptyListTranslation);
     }
   }

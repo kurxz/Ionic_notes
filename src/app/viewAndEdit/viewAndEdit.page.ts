@@ -25,11 +25,10 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { formatDate } from "@angular/common";
-import { NavController } from "@ionic/angular";
 import { AlertController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 import { DatabaseService } from "../services/database.service";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-visualizar",
@@ -37,6 +36,7 @@ import { DatabaseService } from "../services/database.service";
   styleUrls: ["./viewAndEdit.page.scss"],
 })
 export class viewAndEditPage implements OnInit {
+
   data: any;
   id: number = null;
   newTitle: string;
@@ -53,7 +53,6 @@ export class viewAndEditPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private database: DatabaseService,
-    private navCtrl: NavController,
     private alertController: AlertController,
     private translate: TranslateService
   ) {
@@ -88,9 +87,21 @@ export class viewAndEditPage implements OnInit {
         this.created = this.data.note.createdat;
         this.edited = this.data.note.edited;
       } else {
-        this.navCtrl.navigateForward("/home");
+        this.router.navigate(["/home"]);
       }
     });
+  }
+
+  
+  ionViewWillLeave () {
+
+    delete this.data;
+    delete this.id
+    delete this.newTitle;
+    delete this.newText
+    delete this.created
+    delete this.edited
+  
   }
 
   goToHomePage() {
@@ -112,7 +123,7 @@ export class viewAndEditPage implements OnInit {
           text: this.yesAnswer,
           handler: () => {
             this.database.Delete(this.id);
-            this.navCtrl.navigateForward("/home");
+            this.router.navigate(["/home"]);
           },
         },
       ],
@@ -122,15 +133,21 @@ export class viewAndEditPage implements OnInit {
   }
 
   async Update() {
-    let editedNow = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
-
+  
     let data = {
       title: this.newTitle,
       text: this.newText,
       createdat: this.created,
-      edited: editedNow,
+      edited: Date.now(),
     };
+
     this.database.Update(this.id, data);
-    this.navCtrl.navigateForward("/home");
+    this.router.navigate(["/home"]);
   }
+
+  formatDates(date){
+    var result = moment(date).format('D MMMM YYYY, h:mm:ss a')
+    return result
+   }
+
 }

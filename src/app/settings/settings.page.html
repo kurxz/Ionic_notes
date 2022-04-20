@@ -46,9 +46,11 @@
       >
       <ion-icon name="language-outline"></ion-icon>
       <ion-select value="{{ this.langfromDB }}" (ionChange)="langSet($event)">
-        <ion-select-option value="pt">Português Brasil</ion-select-option>
-        <ion-select-option value="en">English</ion-select-option>
-        <ion-select-option value="es">Español</ion-select-option>
+
+      <span *ngFor="let languages of languagesArray"> 
+        <ion-select-option value="{{ languages.code }}"> {{ languages.langName }} </ion-select-option>
+      </span>
+
       </ion-select>
     </ion-item>
 
@@ -65,7 +67,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label class="ion-text-wrap"> Ver: 1.3.0 </ion-label>
+          <ion-label class="ion-text-wrap"> Ver: 1.4.0 </ion-label>
         </ion-item>
       </ion-list>
 

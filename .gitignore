@@ -12,6 +12,7 @@
 Thumbs.db
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
+.env
 
 *.log
 log.txt
@@ -31,3 +32,4 @@ npm-debug.log*
 /www
 /android
 /e2e
+/android

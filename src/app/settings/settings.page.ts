@@ -29,6 +29,7 @@ import { DatabaseService } from "../services/database.service";
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../services/languages.service'
 import { Router } from '@angular/router';
+import { lang } from "moment";
 
 @Component({
   selector: "app-config",
@@ -55,6 +56,30 @@ export class settingsPage implements OnInit {
   ) {
 
   }
+
+languagesArray:any = [
+
+  {
+    "langName" : "Português Brasil",
+    "code" : "pt"
+  },
+
+  {
+    "langName" : "English",
+    "code" : "en"
+  },
+
+  {
+    "langName" : "Español",
+    "code" : "es"
+  },
+
+  {
+    "langName" : "Italiano",
+    "code" : "it"
+  }
+
+]
 
   async ngOnInit() {
 
@@ -179,6 +204,12 @@ export class settingsPage implements OnInit {
         fullnameofLang = "Español"
 
         break;
+
+        case 'it':
+
+          fullnameofLang = "Italiano"
+  
+          break;
 
       default:
 

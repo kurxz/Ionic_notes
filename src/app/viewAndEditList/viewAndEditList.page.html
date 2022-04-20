@@ -35,7 +35,7 @@
   <ion-item>
     <ion-label position="floating">Title</ion-label>
     <ion-input
-      placeholder="{{ 'translations.notesPagesGeneral.titlePlaceHolder' | translate }} "
+      placeholder="{{ 'translations.notesPagesGeneral.titlePlaceHolder' | translate }}"
       [(ngModel)]="title"
     >
     </ion-input>
@@ -45,15 +45,13 @@
     <ion-row>
       <ion-col>
         <div class="ion-text-start">
-          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ created
-          }}
+          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ formatDates(created) }}
         </div>
       </ion-col>
       <ion-col> </ion-col>
       <ion-col *ngIf="data.list.edited != null">
         <div class="ion-text-center">
-          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{
-          data.list.edited }}
+          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{ formatDates(data.list.edited) }}
         </div>
       </ion-col>
     </ion-row>
@@ -76,16 +74,24 @@
 
     <ng-template #itemIsNotDone>
       <ion-input
-        placeholder="{{ 'translations.notesPagesGeneral.inputPlaceHolder | translate }}"
+        placeholder=" {{ 'translations.notesPagesGeneral.inputPlaceHolder' | translate }} "
         type="text"
         text-right
         required
-        [(ngModel)]="list[idx].item"
-      ></ion-input>
+        [(ngModel)]="list[idx].item">
+      </ion-input>
+
+
     </ng-template>
 
     <ion-button color="danger" (click)="RemoveItem(idx)">X</ion-button>
   </ion-item>
+
+  <ion-fab slot="fixed" class="buttonAlign">
+    <ion-fab-button (click)="Add()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 <ion-footer>
@@ -111,4 +117,5 @@
       </ion-button>
     </div>
   </ion-row>
+ 
 </ion-footer>

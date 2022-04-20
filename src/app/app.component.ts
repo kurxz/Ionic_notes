@@ -26,8 +26,11 @@
 import { LanguageService } from "./services/languages.service";
 import { Component } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { ActionSheetController } from "@ionic/angular";
+import { ActionSheetController, Platform } from "@ionic/angular";
 import { Router } from "@angular/router";
+import { Location } from '@angular/common'
+import { SplashScreen } from '@capacitor/splash-screen';
+ 
 
 @Component({
   selector: "app-root",
@@ -41,8 +44,16 @@ export class AppComponent {
     private LanguageService: LanguageService,
     private translate: TranslateService,
     private actionSheetController: ActionSheetController,
-    private route: Router
-  ) {}
+    private route: Router,
+    private platform: Platform,
+    private location: Location
+  ) {
+
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.location.back()
+    });
+
+  }
 
   newListTranslation: string;
   newNoteTranslation: string;
@@ -68,7 +79,11 @@ export class AppComponent {
       });
   }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 2000)
+  }
 
   async ActionSheetMenu() {
     await this.LanguageService.defaultLang();

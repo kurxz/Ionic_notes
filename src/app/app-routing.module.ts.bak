@@ -16,21 +16,25 @@ const routes: Routes = [
     loadChildren: () => import('./newNote/newNote.module').then( m => m.newNotePageModule)
   },
   {
-    path: 'newList',
-    loadChildren: () => import('./newList/newList.module').then( m => m.NewListPageModule)
-  },
-  {
     path: 'viewAndEdit',
     loadChildren: () => import('./viewAndEdit/viewAndEdit.module').then( m => m.viewAndEditPageeModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.settingsPageModule)
+  },
+  {
+    path: 'newList',
+    loadChildren: () => import('./newList/newList.module').then( m => m.NewListPageModule)
   },
   {
     path: 'viewAndEditList',
     loadChildren: () => import('./viewAndEditList/viewAndEditList.module').then( m => m.ViewAndEditListPageModule)
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.settingsPageModule)
-  }
+    path: '**',
+    loadChildren: () => import('./newNote/newNote.module').then( m => m.newNotePageModule)
+  },
 ];
 
 @NgModule({

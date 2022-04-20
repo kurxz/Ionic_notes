@@ -60,7 +60,7 @@
                 </ion-item>
 
                 <ion-label *ngIf="item.list.createdat != null" class="ion-text-center">
-                  {{ 'translations.notesPagesGeneral.created' | translate }}: {{ item.list.createdat }}
+                  {{ 'translations.notesPagesGeneral.created' | translate }} {{ countSinceDate(item.list.createdat) }}
                 </ion-label>
               </ion-card>
             </div>
@@ -106,8 +106,8 @@
                     </span>
                     -
                   </ion-col>
-                  {{ 'translations.notesPagesGeneral.created' | translate }}: {{
-                  item.list.createdat }}
+                  {{ 'translations.notesPagesGeneral.created' | translate }} {{
+                    countSinceDate(item.list.createdat) }}
                 </ion-label>
               </ion-card>
             </ng-template>

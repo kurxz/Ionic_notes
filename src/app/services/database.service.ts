@@ -26,6 +26,8 @@
 import { Injectable } from "@angular/core";
 import { Storage, IonicStorageModule } from "@ionic/storage-angular";
 import { ToastController } from "@ionic/angular";
+import * as moment from 'moment';
+
 
 @Injectable({
   providedIn: "root",
@@ -51,7 +53,9 @@ export class DatabaseService {
 
   async Insert(key, data) {
     try {
+      
       this.storage.set(key, data);
+
     } catch (error) {
       const toast = await this.toastController.create({
         message: "Error",
@@ -158,6 +162,7 @@ export class DatabaseService {
 
   async getLang() {
     return this.storage.get("langCode").then((language) => {
+      moment.locale(language)
       return language;
     });
   }

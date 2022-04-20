@@ -27,7 +27,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AlertController } from "@ionic/angular";
 import { DatabaseService } from "../services/database.service";
-import { formatDate } from "@angular/common";
+import * as moment from 'moment';
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -36,6 +36,7 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./viewAndEditList.page.scss"],
 })
 export class ViewAndEditListPage implements OnInit {
+
   data: any;
   id: number;
   oldList: any;
@@ -77,6 +78,19 @@ export class ViewAndEditListPage implements OnInit {
       }
     });
   }
+
+  ngOnDestroy () {
+
+    delete this.data;
+    delete this.id
+    delete this.list;
+    delete this.oldList
+    delete this.created
+    delete this.id
+    delete this.title
+  
+  }
+
 
   async getTranslations() {
     await this.translate
@@ -140,19 +154,19 @@ export class ViewAndEditListPage implements OnInit {
     if (arrayLength > 0) {
       await this.filterEntry();
 
-      let editedNow = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
       let data = {
         title: this.title,
         myLists: this.list,
         createdat: this.created,
-        edited: editedNow,
+        edited: Date.now(),
       };
 
       await this.database.Insert(this.id, data);
 
       this.goToHomePage();
+
     } else {
-      this.msgAlertOK("VAZIO INSIRA");
+
     }
   }
 
@@ -190,4 +204,12 @@ export class ViewAndEditListPage implements OnInit {
 
     await alert.present();
   }
+
+
+  formatDates(date){
+    var result = moment(date).format('D MMMM YYYY, h:mm:ss a')
+    return result
+   }
+
+   
 }

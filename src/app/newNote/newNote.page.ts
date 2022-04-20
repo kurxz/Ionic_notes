@@ -26,7 +26,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { DatabaseService } from "../services/database.service";
-import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-nota",
@@ -34,6 +33,7 @@ import { formatDate } from "@angular/common";
   styleUrls: ["./newNote.page.scss"],
 })
 export class newNote implements OnInit {
+
   text;
   title;
   day: number = Date.now();
@@ -46,16 +46,23 @@ export class newNote implements OnInit {
     this.route.navigate(["/home"]);
   }
 
+  ionViewWillLeave () {
+
+  delete this.text;
+  delete this.title
+  delete this.day;
+
+  }
+
   async save() {
+
     if (this.text == undefined) {
     } else {
       
-      let today = formatDate(new Date(), "dd/MM/yyyy - HH:mm:ss", "en");
-      let data = { title: this.title, text: this.text, createdat: today };
-
+      let data = { title: this.title, text: this.text, createdat: this.day };
       await this.database.Insert(this.day, data);
-
       this.homePage();
+
     }
   }
 }

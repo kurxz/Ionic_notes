@@ -50,22 +50,20 @@
     <ion-row>
       <ion-col>
         <div class="ion-text-start">
-          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ created }}
+          {{ 'translations.notesPagesGeneral.created' | translate }}: {{ formatDates(created) }}
         </div>
       </ion-col>
       <ion-col> </ion-col>
   
       <ion-col *ngIf="edited != null">
         <div class="ion-text-center">
-          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{ edited }}
+          {{ 'translations.notesPagesGeneral.edited' | translate }}: {{ formatDates(edited) }}
         </div>
         
       </ion-col>
   
     </ion-row>  
     
-
-
   </ion-item-divider>
 
   <ion-item>
@@ -76,9 +74,11 @@
   </ion-item>
 
 </div>
+ 
 </ion-content>
 
 <ion-footer>
+ 
 <ion-row style="display: flex;  justify-content: space-between;">
   <div>
   
@@ -91,14 +91,12 @@
   
 <div>
 
- 
     <ion-button size="small" color="danger" (click)="Delete()">
       <ion-icon name="close-outline" slot="start"></ion-icon>{{ 'translations.notesPagesGeneral.deleteButton' |
       translate }}
     </ion-button>
 
 </div>
-
 
   <div>
     <ion-button size="small" color="success" (click)="Update()">
@@ -107,7 +105,5 @@
     </ion-button>
   </div>
 </ion-row>
-  
  
-
 </ion-footer>
