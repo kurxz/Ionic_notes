@@ -65,7 +65,6 @@ export class HomePage {
 
   async ngOnInit() {}
 
-
   ionViewWillEnter() {
     this.languageservice.defaultLang();
     this.listAll();

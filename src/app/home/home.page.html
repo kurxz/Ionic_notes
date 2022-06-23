@@ -49,18 +49,19 @@
           <ion-col>
             <div *ngIf="item.list.text != null  ; else isList">
               <ion-card>
-                <ion-item
-                  (click)="viewDetails(item.id, item.list)"
-                >
+                <ion-item (click)="viewDetails(item.id, item.list)">
                   <ion-label>
-                    {{ item.list.title }}
-
-                    <p>{{ item.list.text }}</p>
+                    <span id="title"> {{ item.list.title }} </span>
+                    <p id="text">{{ item.list.text }}</p>
                   </ion-label>
                 </ion-item>
 
-                <ion-label *ngIf="item.list.createdat != null" class="ion-text-center">
-                  {{ 'translations.notesPagesGeneral.created' | translate }} {{ countSinceDate(item.list.createdat) }}
+                <ion-label
+                  *ngIf="item.list.createdat != null"
+                  class="ion-text-center"
+                >
+                  {{ 'translations.notesPagesGeneral.created' | translate }} {{
+                  countSinceDate(item.list.createdat) }}
                 </ion-label>
               </ion-card>
             </div>
@@ -98,7 +99,7 @@
                   </ion-label>
                 </ion-item>
 
-                <ion-label  >
+                <ion-label>
                   <ion-col size="1" *ngIf="item.list.myLists.length > 3 ; ">
                     {{ 'translations.homePage.andOthers' | translate }}
                     <span style="font-weight: bold">
@@ -107,7 +108,7 @@
                     -
                   </ion-col>
                   {{ 'translations.notesPagesGeneral.created' | translate }} {{
-                    countSinceDate(item.list.createdat) }}
+                  countSinceDate(item.list.createdat) }}
                 </ion-label>
               </ion-card>
             </ng-template>
@@ -115,15 +116,10 @@
         </ion-row>
       </div>
 
-      <ng-template #other_content  >
-       
-    <div class="noNotes"> 
-
-      {{ 'translations.homePage.noNotes' | translate }}    
- 
-
-    </div>
-        
+      <ng-template #other_content>
+        <div class="noNotes">
+          {{ 'translations.homePage.noNotes' | translate }}
+        </div>
       </ng-template>
     </div>
   </div>

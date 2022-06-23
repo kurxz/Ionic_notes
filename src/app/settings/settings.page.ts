@@ -21,120 +21,102 @@
    See the License for the specific language governing permissions and
    limitations under the License.    
 
-*/   
+*/
 
 import { Component, OnInit } from "@angular/core";
 import { AlertController } from "@ionic/angular";
 import { DatabaseService } from "../services/database.service";
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../services/languages.service'
-import { Router } from '@angular/router';
-import { lang } from "moment";
+import { TranslateService } from "@ngx-translate/core";
+import { LanguageService } from "../services/languages.service";
 
 @Component({
   selector: "app-config",
   templateUrl: "./settings.page.html",
   styleUrls: ["./settings.page.scss"],
 })
-
 export class settingsPage implements OnInit {
-
-  contributors: string
-  alert: string
-  langSetTo: string
-  resetText: string
-  yesAnswer: string
-  noAnswer: string
-  langfromDB: string
+  contributors: string;
+  alert: string;
+  langSetTo: string;
+  resetText: string;
+  yesAnswer: string;
+  noAnswer: string;
+  langfromDB: string;
 
   constructor(
     public alertController: AlertController,
     private database: DatabaseService,
     public translate: TranslateService,
-    public languageservice: LanguageService,
-    private router: Router
-  ) {
+    public languageservice: LanguageService
+  ) {}
 
-  }
+  languagesArray: any = [
+    {
+      langName: "Português Brasil",
+      code: "pt",
+    },
 
-languagesArray:any = [
+    {
+      langName: "English",
+      code: "en",
+    },
 
-  {
-    "langName" : "Português Brasil",
-    "code" : "pt"
-  },
+    {
+      langName: "Español",
+      code: "es",
+    },
 
-  {
-    "langName" : "English",
-    "code" : "en"
-  },
-
-  {
-    "langName" : "Español",
-    "code" : "es"
-  },
-
-  {
-    "langName" : "Italiano",
-    "code" : "it"
-  }
-
-]
+    {
+      langName: "Italiano",
+      code: "it",
+    },
+  ];
 
   async ngOnInit() {
-
     await this.getTranslations();
     await this.updateLangFromDB();
-
   }
 
   ionViewWillEnter() {
     this.languageservice.defaultLang();
-
   }
 
   async updateLangFromDB() {
-
-     await this.database.getLang().then(langCode => {
-      this.langfromDB = langCode
-    })
-
+    await this.database.getLang().then((langCode) => {
+      this.langfromDB = langCode;
+    });
   }
 
   async doRefresh() {
-
-    await this.updateLangFromDB()
+    await this.updateLangFromDB();
     await this.getTranslations();
-    await this.translate.use(this.langfromDB)
+    await this.translate.use(this.langfromDB);
 
-    setTimeout(() => {
-
-    }, 1000);
+    setTimeout(() => {}, 1000);
   }
 
   async getTranslations() {
+    await this.translate
+      .get("translations.settingsPage")
+      .toPromise()
+      .then((translation) => {
+        this.resetText = translation.resetText;
+        this.langSetTo = translation.langSetTo;
+        this.contributors = translation.contributorsText;
+      });
 
-    await this.translate.get('translations.settingsPage').toPromise().then(translation => {
-
-      this.resetText = translation.resetText;
-      this.langSetTo = translation.langSetTo
-      this.contributors = translation.contributorsText
-
-    });
-
-    await this.translate.get('translations.general').toPromise().then(translation => {
-      this.alert = translation.alert
-      this.yesAnswer = translation.yesAnswer
-      this.noAnswer = translation.noAnswer
-
-    });
-
+    await this.translate
+      .get("translations.general")
+      .toPromise()
+      .then((translation) => {
+        this.alert = translation.alert;
+        this.yesAnswer = translation.yesAnswer;
+        this.noAnswer = translation.noAnswer;
+      });
   }
 
   async warningReset() {
-
-    await this.getTranslations().then(async fuction => {
-
+    await this.getTranslations().then(async (fuction) => {
       const alert = await this.alertController.create({
         cssClass: "my-custom-class",
         header: this.alert,
@@ -150,7 +132,7 @@ languagesArray:any = [
           },
           {
             text: this.noAnswer,
-            handler: () => { },
+            handler: () => {},
           },
         ],
       });
@@ -160,23 +142,20 @@ languagesArray:any = [
   }
 
   async langSet(langcode) {
+    let languageCode = langcode.detail.value;
 
-    let languageCode = langcode.detail.value
-
-    await this.database.setLang(languageCode)
+    await this.database.setLang(languageCode);
     await this.getTranslations();
     this.langSetAlert(languageCode);
-     
   }
 
   async contributorsAlert() {
-
-    await this.getTranslations().then(async fuction => {
+    await this.getTranslations().then(async (fuction) => {
       const alert = await this.alertController.create({
-        cssClass: 'my-custom-class',
+        cssClass: "my-custom-class",
         header: this.contributors + " :)",
-        message: 'Lucyferinna uwu - Español',
-        buttons: ['OK']
+        message: "Lucyferinna uwu - Español",
+        buttons: ["OK"],
       });
 
       await alert.present();
@@ -184,53 +163,42 @@ languagesArray:any = [
   }
 
   async langSetAlert(langcode) {
-
-    var fullnameofLang = ""
+    var fullnameofLang = "";
     switch (langcode) {
-
-      case 'pt':
-
-        fullnameofLang = "Português Brasil"
+      case "pt":
+        fullnameofLang = "Português Brasil";
 
         break;
 
-      case 'en':
-        fullnameofLang = "English"
+      case "en":
+        fullnameofLang = "English";
         break;
 
-
-      case 'es':
-
-        fullnameofLang = "Español"
+      case "es":
+        fullnameofLang = "Español";
 
         break;
 
-        case 'it':
+      case "it":
+        fullnameofLang = "Italiano";
 
-          fullnameofLang = "Italiano"
-  
-          break;
+        break;
 
       default:
-
         break;
-
     }
 
-if(this.langfromDB != langcode) {
+    if (this.langfromDB != langcode) {
+      const alert = await this.alertController.create({
+        cssClass: "my-custom-class",
+        header: this.alert,
+        message: this.langSetTo + ": " + fullnameofLang,
+        buttons: ["OK"],
+      });
 
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: this.alert,
-      message: this.langSetTo + ": " + fullnameofLang,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-    await this.doRefresh();
-    await alert.onDidDismiss();
-
+      await alert.present();
+      await this.doRefresh();
+      await alert.onDidDismiss();
+    }
   }
-  }
-
 }

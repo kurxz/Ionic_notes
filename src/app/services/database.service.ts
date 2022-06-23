@@ -26,8 +26,7 @@
 import { Injectable } from "@angular/core";
 import { Storage, IonicStorageModule } from "@ionic/storage-angular";
 import { ToastController } from "@ionic/angular";
-import * as moment from 'moment';
-
+import * as moment from "moment";
 
 @Injectable({
   providedIn: "root",
@@ -44,7 +43,6 @@ export class DatabaseService {
 
   async init() {
     IonicStorageModule.forRoot();
-
     const storage = await this.storage.create();
     this._storage = storage;
   }
@@ -52,10 +50,10 @@ export class DatabaseService {
   notesNumber: number;
 
   async Insert(key, data) {
-    try {
-      
-      this.storage.set(key, data);
+    if (key == undefined || data == undefined) return;
 
+    try {
+      this.storage.set(key, data);
     } catch (error) {
       const toast = await this.toastController.create({
         message: "Error",
@@ -113,7 +111,6 @@ export class DatabaseService {
     this.storage.forEach((key, value, index) => {
       if (value != "langCode") {
         this.storage.get(value).then((data) => {
-
           list.push({ list: data, id: value });
         });
       }
@@ -162,7 +159,7 @@ export class DatabaseService {
 
   async getLang() {
     return this.storage.get("langCode").then((language) => {
-      moment.locale(language)
+      moment.locale(language);
       return language;
     });
   }

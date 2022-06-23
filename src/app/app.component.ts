@@ -31,7 +31,6 @@ import { Router } from "@angular/router";
 import { Location } from '@angular/common'
 import { SplashScreen } from '@capacitor/splash-screen';
  
-
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",

@@ -57,6 +57,7 @@ export class viewAndEditPage implements OnInit {
     private translate: TranslateService
   ) {
     this.getTranslations();
+
   }
 
   async getTranslations() {

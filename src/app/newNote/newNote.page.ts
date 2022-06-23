@@ -36,7 +36,6 @@ export class newNote implements OnInit {
 
   text;
   title;
-  day: number = Date.now();
 
   constructor(private route: Router, public database: DatabaseService) {}
 
@@ -46,23 +45,33 @@ export class newNote implements OnInit {
     this.route.navigate(["/home"]);
   }
 
-  ionViewWillLeave () {
-
-  delete this.text;
-  delete this.title
-  delete this.day;
-
+  ionViewWillLeave() {
+    delete this.text;
+    delete this.title;
   }
 
   async save() {
-
     if (this.text == undefined) {
     } else {
       
-      let data = { title: this.title, text: this.text, createdat: this.day };
-      await this.database.Insert(this.day, data);
-      this.homePage();
-
+      let data = new NoteModel(this.title, this.text, Date.now());
+      await this.database.Insert(Date.now().toString(), data).then(() => {
+        data = null;
+        this.homePage();
+      });
+      
     }
+  }
+}
+
+export class NoteModel {
+  title: String;
+  text: String;
+  createdat: Number;
+
+  constructor(title, text, createdat) {
+    this.title = title;
+    this.text = text;
+    this.createdat = createdat;
   }
 }
