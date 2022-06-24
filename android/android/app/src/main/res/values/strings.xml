@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="title_activity_main">Notes</string>
+    <string name="package_name">kurxz.github.io</string>
+    <string name="custom_url_scheme">kurxz.github.io</string>
+</resources>

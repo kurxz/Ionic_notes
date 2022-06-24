@@ -1,0 +1,62 @@
+{
+  "_Thanks": "Lucyferrina <3",
+  "translations": {
+    "general": {
+      "yesAnswer": "Sí",
+      "noAnswer": "No",
+      "alert": "Alerta",
+      "add": "Agregar",
+      "cancel": "Cancelar"
+    },
+    "homePage": {
+      "noNotes": "No se encontraron notas",
+      "andOthers": "Y otras"
+    },
+    "sMenu": {
+      "homePage": "Home",
+      "newNote": "Nueva Nota",
+      "newList": "Nueva Lista",
+      "newItem": "Nuevo Item",
+      "settings": "Ajustes"
+    },
+    "notesPagesGeneral": {
+      "notesTitle": "Título",
+      "placeHolderTitle": "Tu título",
+      "notesDescription": "Descripción",
+      "placeHolderDescription": "Tu texto aqui",
+      "inputPlaceHolder": "¿Tu objeto?",
+      "backButton": "Atrás",
+      "deleteButton": "Deletar",
+      "saveButton": "Guardar",
+      "created": "Creado",
+      "edited": "Editado en"
+    },
+    "newNotePage": {
+      "pageTitle": "Notes - Creación de una nueva nota"
+    },
+    "viewAndEditPage": {
+      "pageTitle": "Notes - Ver y editar",
+      "alertText": "¿Estás seguro de que quieres eliminar esta nota?"
+    },
+    "newListPage": {
+      "pageTitle": "Notes - Creación de una nueva lista",
+      "emptyList": "Tu lista esta vacia"
+    },
+    "viewAndEditList": {
+      "pageTitle": "Notes - Ver y editar"
+    },
+    "settingsPage": {
+      "pageTitle": "Notes - Ajustes",
+      "appOptions": "Opciones de la aplicación",
+      "languageSelect": "Idioma",
+      "aboutTitle": "Acerca de la aplicación",
+      "aboutText": "Un proyecto simple usando Ionic Framework",
+      "githubCode": "Código en Github",
+      "dangerZone": "Zona peligrosa",
+      "resetAppButton": "Restablecer la base de datos de la aplicación",
+      "resetText": "Estás a punto de restablecer la base de datos <p> <strong> Todas tus notas se perderán </strong> </p> <p> ¿Quieres continuar? </p>",
+      "contributorsText": "Colaboradores",
+      "langSetTo": "Idioma establecido en"
+    }
+  }
+}

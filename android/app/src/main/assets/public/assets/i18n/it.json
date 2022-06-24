@@ -1,0 +1,70 @@
+{
+  "translations": {
+    "general": {
+      "yesAnswer": "Sì",
+      "noAnswer": "No",
+      "alert": "Avvertire!",
+      "add": "Addizionare",
+      "cancel": "Annulla",
+      "created": "Creato a"
+    },
+
+    "homePage": {
+      "noNotes": "Nessuna nota trovata",
+      "andOthers": "E altri"
+    },
+
+    "sMenu": {
+      "homePage": "Inizio",
+      "newItem": "Nuovo oggetto",
+      "newNote": "Nuova nota",
+      "newList": "Nuova lista",
+      "settings": "Impostazioni"
+    },
+
+    "notesPagesGeneral": {
+      "notesTitle": "Titolo",
+      "placeHolderTitle": "Il tuo titolo",
+      "notesDescription": "Descrizione",
+      "inputPlaceHolder": "Il tuo articolo?",
+      "placeHolderDescription": "Il tuo testo qui",
+      "backButton": "Restituzione",
+      "deleteButton": "Eliminare",
+      "saveButton": "Salva",
+      "created": "Creato",
+      "edited": "Modificato"
+    },
+
+    "newNotePage": {
+      "pageTitle": "Notes - Creazione di una nuova nota"
+    },
+
+    "viewAndEditPage": {
+      "pageTitle": "Notes - Visualizza e modifica",
+      "alertText": "Sei sicuro di eliminare questa nota?"
+    },
+
+    "newListPage": {
+      "pageTitle": "Notes - Creazione di una nuova lista",
+      "emptyList": "La tua lista è vuota"
+    },
+
+    "viewAndEditList": {
+      "pageTitle": "Notes -  Visualizza e modifica"
+    },
+
+    "settingsPage": {
+      "pageTitle": "Notes - Impostazioni",
+      "appOptions": "Opzioni dell'app",
+      "languageSelect": "Lingua",
+      "aboutTitle": "Su",
+      "aboutText": "Un semplice progetto che utilizza lo Ionic Framework",
+      "githubCode": "Codice su Github",
+      "dangerZone": "Zona pericolosa",
+      "resetAppButton": "Reimposta il database dell'app",
+      "resetText": "Stai per ripristinare il database <p> <strong> Tutti i tuoi appunti andranno persi </strong> </p> <p> Vuoi procedere? </p> ",
+      "contributorsText": "Contributori",
+      "langSetTo": "Lingua impostata su"
+    }
+  }
+}
