@@ -21,6 +21,7 @@ Then install the dependencies with\
 
 ## Building the release
 On your terminal type: `` ionic build --prod --release ``\
+Sync the files with `` ionic  cap sync ``\
 Then open the Android Studio with `` ionic cap open android  ``\
 So on Android Studio you can **build** the apk for **debugging** or **release**
 
