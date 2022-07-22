@@ -11,7 +11,7 @@ Supported Languages:
 # How to build
 The core libraries are Ionic 5 and Angular 13
 
-## Installing dependencies
+## Installing the framework and dependencies
 
 Install the last verison of Ionic\
 `` npm install -g @ionic/cli ``
