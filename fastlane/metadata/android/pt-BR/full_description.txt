@@ -1,1 +1,10 @@
 Um aplicativo de notas, com suporte para listas e anotações.
+
+Recursos
+
+Suporte a multi idiomas
+Usa um armazenamento local, seus dados não estão indo para a internet
+Funciona offline
+Usa um esquema de cores escuras, não deixe seus olhos ardendo
+Mostra a hora que a lista ou anotação foi criada
+Código aberto

@@ -1,1 +1,10 @@
 A notepad app, with support to lists and notes
+
+Features
+
+Multi language support
+Uses a local storage, you data are not going online
+Works offline
+Uses a dark color scheme dont burn your eyes
+Shows time when list or note was created
+Open source
