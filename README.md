@@ -1,6 +1,6 @@
 # Ionic_Notes
 
-**Android Notepad** app using Ionic Framework. With multi language support
+**Notepad** app using Ionic Framework. With multi language support.
 
 Supported Languages:
 - English
@@ -8,13 +8,15 @@ Supported Languages:
 - Português Brasil
 - Italiano
 
-## Preparing the App
+# How to build
 The core libraries are Ionic 5 and Angular 13
+
+## Installing dependencies
 
 Install the last verison of Ionic\
 `` npm install -g @ionic/cli ``
 
-Then install the depencenies with\
+Then install the dependencies with\
 `` npm install ``
 
 ## Building the release
