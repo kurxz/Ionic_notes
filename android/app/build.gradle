@@ -6,7 +6,7 @@ android {
         applicationId "kurxz.github.io"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20220801
+        versionCode 20220701
         versionName '1.5'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
