@@ -317,6 +317,19 @@ html.ios ion-modal.modal-card .ion-page {
   overflow: hidden;
   z-index: 0;
 }
+/**
+ * When making custom dialogs, using
+ * ion-content is not required. As a result,
+ * some developers may wish to have dialogs
+ * that are automatically sized by the browser.
+ * These changes allow certain dimension values
+ * such as fit-content to work correctly.
+ */
+ion-modal .ion-page {
+  position: relative;
+  contain: layout style;
+  height: 100%;
+}
 .split-pane-visible > .ion-page.split-pane-main {
   position: relative;
 }

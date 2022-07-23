@@ -24,7 +24,7 @@
 */
 
 import { LanguageService } from "./services/languages.service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { ActionSheetController, Platform } from "@ionic/angular";
 import { Router } from "@angular/router";
@@ -36,8 +36,16 @@ import { SplashScreen } from '@capacitor/splash-screen';
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
 })
-export class AppComponent {
+
+ 
+export class AppComponent implements OnInit{
+
   navigate: any;
+
+  newListTranslation: string;
+  newNoteTranslation: string;
+  addTranslation: string;
+  cancelTranslation: string;
 
   constructor(
     private LanguageService: LanguageService,
@@ -45,7 +53,7 @@ export class AppComponent {
     private actionSheetController: ActionSheetController,
     private route: Router,
     private platform: Platform,
-    private location: Location
+    private location: Location,
   ) {
 
     this.platform.backButton.subscribeWithPriority(10, () => {
@@ -54,14 +62,14 @@ export class AppComponent {
 
   }
 
-  newListTranslation: string;
-  newNoteTranslation: string;
-  addTranslation: string;
-  cancelTranslation: string;
+  async ngOnInit() {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 2000)
+  }
 
   async getTranslations() {
-    await this.translate
-      .get("translations.sMenu")
+    await this.translate.get("translations.sMenu")
       .toPromise()
       .then((translation) => {
         this.newNoteTranslation = translation.newNote;
@@ -78,11 +86,6 @@ export class AppComponent {
       });
   }
 
-  async ngOnInit() {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 2000)
-  }
 
   async ActionSheetMenu() {
     await this.LanguageService.defaultLang();
