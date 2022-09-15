@@ -98,8 +98,7 @@ export class settingsPage implements OnInit {
   async getTranslations() {
     await this.translate
       .get("translations.settingsPage")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.resetText = translation.resetText;
         this.langSetTo = translation.langSetTo;
         this.contributors = translation.contributorsText;
@@ -107,8 +106,7 @@ export class settingsPage implements OnInit {
 
     await this.translate
       .get("translations.general")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.alert = translation.alert;
         this.yesAnswer = translation.yesAnswer;
         this.noAnswer = translation.noAnswer;

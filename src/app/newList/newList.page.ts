@@ -36,8 +36,7 @@ export class NewListPage implements OnInit {
   async getTranslations() {
     await this.translate
       .get("translations.newListPage")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.emptyListTranslation = translation.emptyList;
       });
   }

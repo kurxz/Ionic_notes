@@ -28,18 +28,15 @@ import { Component, OnInit } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { ActionSheetController, Platform } from "@ionic/angular";
 import { Router } from "@angular/router";
-import { Location } from '@angular/common'
-import { SplashScreen } from '@capacitor/splash-screen';
- 
+import { Location } from "@angular/common";
+import { SplashScreen } from "@capacitor/splash-screen";
+
 @Component({
   selector: "app-root",
   templateUrl: "app.component.html",
   styleUrls: ["app.component.scss"],
 })
-
- 
-export class AppComponent implements OnInit{
-
+export class AppComponent implements OnInit {
   navigate: any;
 
   newListTranslation: string;
@@ -53,41 +50,35 @@ export class AppComponent implements OnInit{
     private actionSheetController: ActionSheetController,
     private route: Router,
     private platform: Platform,
-    private location: Location,
+    private location: Location
   ) {
-
     this.platform.backButton.subscribeWithPriority(10, () => {
-      this.location.back()
+      this.location.back();
     });
-
   }
 
   async ngOnInit() {
     setTimeout(() => {
       SplashScreen.hide();
-    }, 2000)
+    }, 2000);
   }
 
   async getTranslations() {
-    await this.translate.get("translations.sMenu")
-      .toPromise()
-      .then((translation) => {
-        this.newNoteTranslation = translation.newNote;
-        this.newListTranslation = translation.newList;
-        this.cancelTranslation = translation.cancel;
-      });
+    await this.translate.get("translations.sMenu").subscribe((translation) => {
+      this.newNoteTranslation = translation.newNote;
+      this.newListTranslation = translation.newList;
+      this.cancelTranslation = translation.cancel;
+    });
 
     await this.translate
       .get("translations.general")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.addTranslation = translation.add;
         this.cancelTranslation = translation.cancel;
       });
   }
 
-
-  async ActionSheetMenu() {
+  async BottomMenu() {
     await this.LanguageService.defaultLang();
     await this.getTranslations();
 
