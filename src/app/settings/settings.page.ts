@@ -90,7 +90,7 @@ export class settingsPage implements OnInit {
   async doRefresh() {
     await this.updateLangFromDB();
     await this.getTranslations();
-    await this.translate.use(this.langfromDB);
+    await this.translate.use(this.langfromDB || 'en');
 
     setTimeout(() => {}, 1000);
   }
