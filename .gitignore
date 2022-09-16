@@ -34,7 +34,18 @@ npm-debug.log*
 /www
 /e2e
 /resources
-
+/tmp
+/temp
+/dist/
+/output/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+contents.xcworkspacedata
+android-template/.gradle/
+android-template/app/app.iml
+android-template.iml
 # Using Android gitignore template: https://github.com/github/gitignore/blob/HEAD/Android.gitignore
 
 # Built application files
@@ -121,6 +132,7 @@ lint/intermediates/
 lint/generated/
 lint/outputs/
 lint/tmp/
+.eslintcache
 # lint/reports/
 
 # Android Profiling
