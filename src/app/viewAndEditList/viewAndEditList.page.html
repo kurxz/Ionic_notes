@@ -37,6 +37,7 @@
     <ion-input
       placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}"
       [(ngModel)]="title"
+      autocapitalize="true"
     >
     </ion-input>
   </ion-item>
@@ -70,6 +71,7 @@
       text-right
       required
       [(ngModel)]="list[idx].item"
+      autocapitalize="true"
     ></ion-input>
 
     <ng-template #itemIsNotDone>
@@ -78,8 +80,9 @@
         type="text"
         text-right
         required
-        [(ngModel)]="list[idx].item">
-      </ion-input>
+        [(ngModel)]="list[idx].item"
+        autocapitalize="true"
+      ></ion-input>
 
 
     </ng-template>
