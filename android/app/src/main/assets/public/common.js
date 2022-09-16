@@ -217,7 +217,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "a": () => (/* binding */ attachComponent),
 /* harmony export */   "d": () => (/* binding */ detachComponent)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var _media_bloodhoundr_BEE477F3E477ABF1_Users_Redacted_Documents_Github_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+=======
+/* harmony import */ var C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
 
 
@@ -227,7 +231,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const attachComponent = /*#__PURE__*/function () {
+<<<<<<< HEAD
   var _ref = (0,_media_bloodhoundr_BEE477F3E477ABF1_Users_Redacted_Documents_Github_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
+=======
+  var _ref = (0,C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (delegate, container, component, cssClasses, componentProps, inline) {
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
     var _a;
 
     if (delegate) {
@@ -276,7 +284,11 @@ const CoreDelegate = () => {
   let Reference;
 
   const attachViewToDom = /*#__PURE__*/function () {
+<<<<<<< HEAD
     var _ref2 = (0,_media_bloodhoundr_BEE477F3E477ABF1_Users_Redacted_Documents_Github_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
+=======
+    var _ref2 = (0,C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (parentElement, userComponent, userComponentProps = {}, cssClasses = []) {
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
       var _a, _b;
 
       BaseComponent = parentElement;
@@ -557,7 +569,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "r": () => (/* binding */ resetContentScrollY),
 /* harmony export */   "s": () => (/* binding */ scrollToTop)
 /* harmony export */ });
+<<<<<<< HEAD
 /* harmony import */ var _media_bloodhoundr_BEE477F3E477ABF1_Users_Redacted_Documents_Github_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+=======
+/* harmony import */ var C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
 /* harmony import */ var _index_c4b11676_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-c4b11676.js */ 9273);
 
@@ -594,7 +610,11 @@ const isIonContent = el => el && el.tagName === ION_CONTENT_TAG_NAME;
 
 
 const getScrollElement = /*#__PURE__*/function () {
+<<<<<<< HEAD
   var _ref = (0,_media_bloodhoundr_BEE477F3E477ABF1_Users_Redacted_Documents_Github_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+=======
+  var _ref = (0,C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
     if (isIonContent(el)) {
       yield new Promise(resolve => (0,_helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_1__.c)(el, resolve));
       return el.getScrollElement();
@@ -1238,6 +1258,86 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
 
 
 
+<<<<<<< HEAD
+=======
+/***/ }),
+
+/***/ 320:
+/*!*************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/theme-7670341c.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "c": () => (/* binding */ createColorClasses),
+/* harmony export */   "g": () => (/* binding */ getClassMap),
+/* harmony export */   "h": () => (/* binding */ hostContext),
+/* harmony export */   "o": () => (/* binding */ openURL)
+/* harmony export */ });
+/* harmony import */ var C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+
+
+/*!
+ * (C) Ionic http://ionicframework.com - MIT License
+ */
+const hostContext = (selector, el) => {
+  return el.closest(selector) !== null;
+};
+/**
+ * Create the mode and color classes for the component based on the classes passed in
+ */
+
+
+const createColorClasses = (color, cssClassMap) => {
+  return typeof color === 'string' && color.length > 0 ? Object.assign({
+    'ion-color': true,
+    [`ion-color-${color}`]: true
+  }, cssClassMap) : cssClassMap;
+};
+
+const getClassList = classes => {
+  if (classes !== undefined) {
+    const array = Array.isArray(classes) ? classes : classes.split(' ');
+    return array.filter(c => c != null).map(c => c.trim()).filter(c => c !== '');
+  }
+
+  return [];
+};
+
+const getClassMap = classes => {
+  const map = {};
+  getClassList(classes).forEach(c => map[c] = true);
+  return map;
+};
+
+const SCHEME = /^[a-z][a-z0-9+\-.]*:/;
+
+const openURL = /*#__PURE__*/function () {
+  var _ref = (0,C_Users_Redacted_Documents_GitHub_Ionic_notes_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (url, ev, direction, animation) {
+    if (url != null && url[0] !== '#' && !SCHEME.test(url)) {
+      const router = document.querySelector('ion-router');
+
+      if (router) {
+        if (ev != null) {
+          ev.preventDefault();
+        }
+
+        return router.push(url, direction, animation);
+      }
+    }
+
+    return false;
+  });
+
+  return function openURL(_x, _x2, _x3, _x4) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+
+
+>>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
 /***/ })
 
 }]);

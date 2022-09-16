@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     private actionSheetController: ActionSheetController,
     private route: Router,
     private platform: Platform,
-    private location: Location
+    private location: Location,
   ) {
     this.platform.backButton.subscribeWithPriority(10, () => {
       this.location.back();
