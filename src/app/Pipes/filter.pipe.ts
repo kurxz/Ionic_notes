@@ -10,13 +10,18 @@ export class FilterPipe implements PipeTransform {
     }
 
     var filteredData = data.filter((element) => {
-      if (element.list.text != null && element.list.text.includes(args)) {
+      args = args.toLowerCase();
+
+      if (
+        element.list.text != null &&
+        element.list.text.toLowerCase().includes(args)
+      ) {
         return true;
       }
 
       if (element.list.myLists != null) {
         return element.list.myLists.some((data) => {
-          if (data.item.includes(args)) {
+          if (data.item.toLowerCase().includes(args)) {
             return true;
           }
         });
