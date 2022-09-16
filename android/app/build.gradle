@@ -6,8 +6,8 @@ android {
         applicationId "kurxz.github.io"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20220701
-        versionName '1.5'
+        versionCode 20220915
+        versionName '1.5.5'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

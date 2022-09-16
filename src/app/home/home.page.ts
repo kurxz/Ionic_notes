@@ -28,7 +28,8 @@ import { Component } from "@angular/core";
 import { Router, NavigationExtras } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { LanguageService } from "../services/languages.service";
-import * as moment from 'moment';
+import * as moment from "moment";
+ 
 
 @Component({
   selector: "app-home",
@@ -36,26 +37,25 @@ import * as moment from 'moment';
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
-  
   listNotes: any[];
   showList: any[];
-
-  notes
+  searchContext:string;
+  notes;
+  
   constructor(
     private route: Router,
     private database: DatabaseService,
 
     private languageservice: LanguageService,
-    public translate: TranslateService
+    public translate: TranslateService,
   ) {}
 
   async listAll() {
-    
     this.listNotes = await this.database.listAll();
     this.listNotes = await this.database.showList();
 
     let amoutOfItems = await this.database.returnNotesCount();
-    
+
     if (amoutOfItems == 0 || amoutOfItems == undefined || amoutOfItems == 1) {
       this.notes = 0;
     } else {
@@ -83,7 +83,7 @@ export class HomePage {
         data: info,
       },
     };
-     
+
     this.route.navigate(["viewAndEdit"], navigationExtras);
     navigationExtras = null;
   }
@@ -117,9 +117,8 @@ export class HomePage {
     }, 2000);
   }
 
-  countSinceDate(date){
+  countSinceDate(date) {
     var result = moment(date).fromNow();
     return result;
   }
-
 }

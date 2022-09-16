@@ -36,7 +36,6 @@ import { TranslateService } from "@ngx-translate/core";
   styleUrls: ["./viewAndEditList.page.scss"],
 })
 export class ViewAndEditListPage implements OnInit {
-
   data: any;
   id: number;
   oldList: any;
@@ -79,31 +78,26 @@ export class ViewAndEditListPage implements OnInit {
     });
   }
 
-  ngOnDestroy () {
-
+  ngOnDestroy() {
     delete this.data;
-    delete this.id
+    delete this.id;
     delete this.list;
-    delete this.oldList
-    delete this.created
-    delete this.id
-    delete this.title
-  
+    delete this.oldList;
+    delete this.created;
+    delete this.id;
+    delete this.title;
   }
-
 
   async getTranslations() {
     await this.translate
       .get("translations.viewAndEditPage")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.alertText = translation.alertText;
       });
 
     await this.translate
       .get("translations.general")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.yesAnswer = translation.yesAnswer;
         this.noAnswer = translation.noAnswer;
         this.alert = translation.alert;
@@ -164,9 +158,7 @@ export class ViewAndEditListPage implements OnInit {
       await this.database.Insert(this.id, data);
 
       this.goToHomePage();
-
     } else {
-
     }
   }
 
@@ -205,11 +197,8 @@ export class ViewAndEditListPage implements OnInit {
     await alert.present();
   }
 
-
-  formatDates(date){
-    var result = moment(date).format('D MMMM YYYY, h:mm:ss a')
-    return result
-   }
-
-   
+  formatDates(date) {
+    var result = moment(date).format("D MMMM YYYY, h:mm:ss a");
+    return result;
+  }
 }

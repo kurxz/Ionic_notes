@@ -42,3 +42,9 @@ ion-card {
   right: 0;
   margin: auto;
 }
+
+ion-searchbar{
+  --background: var(--ion-color-light) !important;
+  --border-radius: 100px !important;
+ 
+}

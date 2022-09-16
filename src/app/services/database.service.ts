@@ -50,7 +50,7 @@ export class DatabaseService {
   notesNumber: number;
 
   async Insert(key, data) {
-    if (key == undefined || data == undefined) return;
+    if (key == null || data == null) return;
 
     try {
       this.storage.set(key, data);
@@ -94,7 +94,7 @@ export class DatabaseService {
     this.storage.forEach((key, value, index) => {
       if (value != "langCode") {
         this.storage.get(value).then((data) => {
-          //console.log("DATA" + data.text)
+
           if (data.text == "") {
             items.push({ text: data.list, id: value });
           }
@@ -154,12 +154,12 @@ export class DatabaseService {
   }
 
   async setLang(langCode) {
-    await this.storage.set("langCode", langCode);
+    await this.storage.set("langCode", langCode || 'en');
   }
 
   async getLang() {
     return this.storage.get("langCode").then((language) => {
-      moment.locale(language);
+      moment.locale(language || 'en');
       return language;
     });
   }

@@ -43,9 +43,10 @@
   </ion-refresher>
 
   <div id="container">
+    <ion-searchbar animated [(ngModel)]="searchContext"></ion-searchbar>
     <div>
-      <div *ngIf="notes >  0 ; else other_content">
-        <ion-row *ngFor="let item of listNotes">
+      <div *ngIf="notes >  0 ; else no_notesFound">
+        <ion-row *ngFor="let item of listNotes | filter: searchContext ">
           <ion-col>
             <div *ngIf="item.list.text != null  ; else isList">
               <ion-card>
@@ -116,7 +117,7 @@
         </ion-row>
       </div>
 
-      <ng-template #other_content>
+      <ng-template #no_notesFound>
         <div class="noNotes">
           {{ 'translations.homePage.noNotes' | translate }}
         </div>

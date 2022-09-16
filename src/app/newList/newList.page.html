@@ -17,6 +17,7 @@
     <ion-input
       placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}"
       [(ngModel)]="title"
+      autocapitalize="true"
     >
     </ion-input>
   </ion-item>
@@ -34,6 +35,7 @@
       text-right
       required
       [(ngModel)]="list[idx].item"
+      autocapitalize="true"
     ></ion-input>
 
     <ion-button color="danger" (click)="RemoveItem(idx)">X</ion-button>
