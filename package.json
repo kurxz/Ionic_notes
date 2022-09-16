@@ -1,6 +1,6 @@
 {
   "name": "Notes",
-  "version": "1.4.0",
+  "version": "1.5.5",
   "author": "KurXZ",
   "homepage": "kurxz.github.io",
   "scripts": {
@@ -33,6 +33,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "moment": "^2.29.3",
+    "ng2-search-filter": "^0.5.1",
     "rxjs": "~7.5.5",
     "zone.js": "~0.11.5"
   },
