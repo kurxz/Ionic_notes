@@ -1,4 +1,4 @@
-# Ionic_Notes
+# Ionic Notes
 
 ### **Notepad** app using Ionic Framework. With multi language support.
 
