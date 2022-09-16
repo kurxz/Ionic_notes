@@ -9,7 +9,7 @@ The logs are sorted by **new** to **old**
 #### Notes **v1.5.5**
 > - Added new feature a search input to find your notes and lists
 > - Now it autocapitalize the field texts
-> - New validation on database>
+> - New validation on database
 > - New typings
 > 
 >**Bug fix**
