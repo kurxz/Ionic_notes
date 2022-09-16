@@ -10,7 +10,7 @@ describe("ViewAndEditListPage", () => {
   let fixture: ComponentFixture<ViewAndEditListPage>;
 
   let mockRouter = {
-  //  navigate: jasmine.createSpy("navigate"),
+ 
     getCurrentNavigation: () => {
       return {
         extras: {
