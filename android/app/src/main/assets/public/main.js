@@ -139,23 +139,20 @@ let AppComponent = class AppComponent {
     }
     getTranslations() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
-            yield this.translate.get("translations.sMenu")
-                .toPromise()
-                .then((translation) => {
+            yield this.translate.get("translations.sMenu").subscribe((translation) => {
                 this.newNoteTranslation = translation.newNote;
                 this.newListTranslation = translation.newList;
                 this.cancelTranslation = translation.cancel;
             });
             yield this.translate
                 .get("translations.general")
-                .toPromise()
-                .then((translation) => {
+                .subscribe((translation) => {
                 this.addTranslation = translation.add;
                 this.cancelTranslation = translation.cancel;
             });
         });
     }
-    ActionSheetMenu() {
+    BottomMenu() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             yield this.LanguageService.defaultLang();
             yield this.getTranslations();
@@ -270,25 +267,34 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Translations(http) {
-    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_3__.TranslateHttpLoader(http, 'assets/i18n/', '.json');
+    return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_3__.TranslateHttpLoader(http, "assets/i18n/", ".json");
 }
 let AppModule = class AppModule {
 };
 AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.NgModule)({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_0__.AppComponent],
+        exports: [],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__.BrowserModule, _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule.forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule, _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.IonicStorageModule.forRoot({
-                driverOrder: [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.SecureStorage, _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.IndexedDB, _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.LocalStorage]
+        imports: [
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__.BrowserModule,
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicModule.forRoot(),
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_1__.AppRoutingModule,
+            _ionic_storage_angular__WEBPACK_IMPORTED_MODULE_8__.IonicStorageModule.forRoot({
+                driverOrder: [
+                    _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.SecureStorage,
+                    _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.IndexedDB,
+                    _ionic_storage__WEBPACK_IMPORTED_MODULE_2__.Drivers.LocalStorage,
+                ],
             }),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClientModule,
             _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__.TranslateModule.forRoot({
                 loader: {
                     provide: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__.TranslateLoader,
-                    useFactory: (Translations),
-                    deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClient]
+                    useFactory: Translations,
+                    deps: [_angular_common_http__WEBPACK_IMPORTED_MODULE_9__.HttpClient],
                 },
-                isolate: false
+                isolate: false,
             }),
         ],
         providers: [{ provide: _angular_router__WEBPACK_IMPORTED_MODULE_11__.RouteReuseStrategy, useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__.IonicRouteStrategy }],
@@ -363,7 +369,7 @@ let DatabaseService = class DatabaseService {
     }
     Insert(key, data) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            if (key == undefined || data == undefined)
+            if (key == null || data == null)
                 return;
             try {
                 this.storage.set(key, data);
@@ -408,7 +414,6 @@ let DatabaseService = class DatabaseService {
         this.storage.forEach((key, value, index) => {
             if (value != "langCode") {
                 this.storage.get(value).then((data) => {
-                    //console.log("DATA" + data.text)
                     if (data.text == "") {
                         items.push({ text: data.list, id: value });
                     }
@@ -469,13 +474,13 @@ let DatabaseService = class DatabaseService {
     }
     setLang(langCode) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            yield this.storage.set("langCode", langCode);
+            yield this.storage.set("langCode", langCode || 'en');
         });
     }
     getLang() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
             return this.storage.get("langCode").then((language) => {
-                moment__WEBPACK_IMPORTED_MODULE_0__.locale(language);
+                moment__WEBPACK_IMPORTED_MODULE_0__.locale(language || 'en');
                 return language;
             });
         });
@@ -547,21 +552,20 @@ let LanguageService = class LanguageService {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
             yield this.database.getLang().then((langCode) => (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
                 if (langCode == null) {
-                    let language = this.translate.getBrowserLang();
-                    this.translate.setDefaultLang(language);
-                    yield this.setLanguage(language);
+                    this.translate.setDefaultLang('en');
+                    yield this.setLanguage('en');
                 }
                 else {
                     yield this.setLanguage(langCode);
-                    this.translate.setDefaultLang(langCode);
+                    this.translate.setDefaultLang(langCode || 'en');
                 }
             }));
         });
     }
     setLanguage(langCode) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__awaiter)(this, void 0, void 0, function* () {
-            this.translate.use(langCode);
-            yield this.database.setLang(langCode);
+            this.translate.use(langCode || 'en');
+            yield this.database.setLang(langCode || 'en');
         });
     }
 };
@@ -662,7 +666,6 @@ var map = {
 	],
 	"./ion-avatar_3.entry.js": [
 		6655,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-avatar_3_entry_js"
 	],
 	"./ion-back-button.entry.js": [
@@ -681,30 +684,32 @@ var map = {
 	],
 	"./ion-button_2.entry.js": [
 		8308,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-button_2_entry_js"
 	],
 	"./ion-card_5.entry.js": [
 		4690,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-card_5_entry_js"
 	],
 	"./ion-checkbox.entry.js": [
 		4090,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-checkbox_entry_js"
 	],
 	"./ion-chip.entry.js": [
 		6214,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-chip_entry_js"
 	],
 	"./ion-col_3.entry.js": [
 		9447,
 		"node_modules_ionic_core_dist_esm_ion-col_3_entry_js"
 	],
+	"./ion-datetime-button.entry.js": [
+		7950,
+		"default-node_modules_ionic_core_dist_esm_parse-34b650b2_js-node_modules_ionic_core_dist_esm_t-c7e1f2",
+		"node_modules_ionic_core_dist_esm_ion-datetime-button_entry_js"
+	],
 	"./ion-datetime_3.entry.js": [
 		9689,
+		"default-node_modules_ionic_core_dist_esm_parse-34b650b2_js-node_modules_ionic_core_dist_esm_t-c7e1f2",
 		"common",
 		"node_modules_ionic_core_dist_esm_ion-datetime_3_entry_js"
 	],
@@ -724,7 +729,6 @@ var map = {
 	],
 	"./ion-input.entry.js": [
 		3288,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-input_entry_js"
 	],
 	"./ion-item-option_3.entry.js": [
@@ -739,7 +743,6 @@ var map = {
 	],
 	"./ion-loading.entry.js": [
 		2855,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-loading_entry_js"
 	],
 	"./ion-menu_3.entry.js": [
@@ -773,12 +776,10 @@ var map = {
 	],
 	"./ion-progress-bar.entry.js": [
 		8994,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-progress-bar_entry_js"
 	],
 	"./ion-radio_2.entry.js": [
 		3592,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-radio_2_entry_js"
 	],
 	"./ion-range.entry.js": [
@@ -802,7 +803,6 @@ var map = {
 	],
 	"./ion-route_4.entry.js": [
 		5534,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-route_4_entry_js"
 	],
 	"./ion-searchbar.entry.js": [
@@ -817,7 +817,6 @@ var map = {
 	],
 	"./ion-select_3.entry.js": [
 		8179,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-select_3_entry_js"
 	],
 	"./ion-slide_2.entry.js": [
@@ -845,17 +844,14 @@ var map = {
 	],
 	"./ion-text.entry.js": [
 		8395,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-text_entry_js"
 	],
 	"./ion-textarea.entry.js": [
 		6357,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-textarea_entry_js"
 	],
 	"./ion-toast.entry.js": [
 		8268,
-		"common",
 		"node_modules_ionic_core_dist_esm_ion-toast_entry_js"
 	],
 	"./ion-toggle.entry.js": [
@@ -1207,7 +1203,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 "use strict";
-module.exports = "<!--\r\n               _____            _        _   _       _            \r\n              |_   _|          (_)      | \\ | |     | |           \r\n                | |  ___  _ __  _  ___  |  \\| | ___ | |_ ___  ___ \r\n                | | / _ \\| '_ \\| |/ __| | . ` |/ _ \\| __/ _ \\/ __|\r\n               _| || (_) | | | | | (__  | |\\  | (_) | ||  __/\\__ \\\r\n              |_____\\___/|_| |_|_|\\___| |_| \\_|\\___/ \\__\\___||___/\r\n\r\n             \r\n   Copyright [2021] [KurXZ] [https:github.com/kurxz]\r\n\r\n   Licensed under the Apache License, Version 2.0 (the \"License\");\r\n   you may not use this file except in compliance with the License.\r\n   You may obtain a copy of the License at\r\n\r\n    http:www.apache.org/licenses/LICENSE-2.0\r\n\r\n   Unless required by applicable law or agreed to in writing, software\r\n   distributed under the License is distributed on an \"AS IS\" BASIS,\r\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n   See the License for the specific language governing permissions and\r\n   limitations under the License.       \r\n-->\r\n\r\n<ion-app>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n  <div>\r\n    <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n        <ion-tab-button tab=\"home\">\r\n          <ion-icon name=\"home\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.homePage\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button (click)=\"ActionSheetMenu()\">\r\n          <ion-icon name=\"chevron-up-outline\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.newItem\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"settings\">\r\n          <ion-icon name=\"settings\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.settings\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n  </div>\r\n</ion-app>\r\n";
+module.exports = "<!--\r\n               _____            _        _   _       _            \r\n              |_   _|          (_)      | \\ | |     | |           \r\n                | |  ___  _ __  _  ___  |  \\| | ___ | |_ ___  ___ \r\n                | | / _ \\| '_ \\| |/ __| | . ` |/ _ \\| __/ _ \\/ __|\r\n               _| || (_) | | | | | (__  | |\\  | (_) | ||  __/\\__ \\\r\n              |_____\\___/|_| |_|_|\\___| |_| \\_|\\___/ \\__\\___||___/\r\n\r\n             \r\n   Copyright [2021] [KurXZ] [https:github.com/kurxz]\r\n\r\n   Licensed under the Apache License, Version 2.0 (the \"License\");\r\n   you may not use this file except in compliance with the License.\r\n   You may obtain a copy of the License at\r\n\r\n    http:www.apache.org/licenses/LICENSE-2.0\r\n\r\n   Unless required by applicable law or agreed to in writing, software\r\n   distributed under the License is distributed on an \"AS IS\" BASIS,\r\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n   See the License for the specific language governing permissions and\r\n   limitations under the License.       \r\n-->\r\n\r\n<ion-app>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n  <div>\r\n    <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n        <ion-tab-button tab=\"home\">\r\n          <ion-icon name=\"home\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.homePage\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button (click)=\"BottomMenu()\">\r\n          <ion-icon name=\"chevron-up-outline\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.newItem\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"settings\">\r\n          <ion-icon name=\"settings\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.settings\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n  </div>\r\n</ion-app>\r\n";
 
 /***/ })
 
