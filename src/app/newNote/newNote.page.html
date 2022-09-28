@@ -47,6 +47,7 @@
         <ion-input
           placeholder="{{ 'translations.notesPagesGeneral.placeHolderTitle' | translate }}"
           [(ngModel)]="title"
+          autocapitalize="true"
         >
         </ion-input>
       </ion-item>
@@ -61,6 +62,7 @@
           placeholder="{{ 'translations.notesPagesGeneral.placeHolderDescription' | translate }}"
           rows="10"
           [(ngModel)]="text"
+          autocapitalize="true"
         ></ion-textarea>
       </ion-item>
     </ion-col>

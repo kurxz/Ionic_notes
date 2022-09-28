@@ -36,7 +36,6 @@ import * as moment from 'moment';
   styleUrls: ["./viewAndEdit.page.scss"],
 })
 export class viewAndEditPage implements OnInit {
-
   data: any;
   id: number = null;
   newTitle: string;
@@ -57,21 +56,18 @@ export class viewAndEditPage implements OnInit {
     private translate: TranslateService
   ) {
     this.getTranslations();
-
   }
 
   async getTranslations() {
     await this.translate
       .get("translations.viewAndEditPage")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.alertText = translation.alertText;
       });
 
     await this.translate
       .get("translations.general")
-      .toPromise()
-      .then((translation) => {
+      .subscribe((translation) => {
         this.yesAnswer = translation.yesAnswer;
         this.noAnswer = translation.noAnswer;
         this.alert = translation.alert;
@@ -93,16 +89,13 @@ export class viewAndEditPage implements OnInit {
     });
   }
 
-  
-  ionViewWillLeave () {
-
+  ionViewWillLeave() {
     delete this.data;
-    delete this.id
+    delete this.id;
     delete this.newTitle;
-    delete this.newText
-    delete this.created
-    delete this.edited
-  
+    delete this.newText;
+    delete this.created;
+    delete this.edited;
   }
 
   goToHomePage() {
@@ -134,7 +127,6 @@ export class viewAndEditPage implements OnInit {
   }
 
   async Update() {
-  
     let data = {
       title: this.newTitle,
       text: this.newText,
@@ -146,9 +138,8 @@ export class viewAndEditPage implements OnInit {
     this.router.navigate(["/home"]);
   }
 
-  formatDates(date){
-    var result = moment(date).format('D MMMM YYYY, h:mm:ss a')
-    return result
-   }
-
+  formatDates(date) {
+    var result = moment(date).format("D MMMM YYYY, h:mm:ss a");
+    return result;
+  }
 }

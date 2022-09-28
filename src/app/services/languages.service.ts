@@ -40,19 +40,19 @@ export class LanguageService {
     await this.database.getLang().then(async (langCode) => {
     
       if (langCode == null) {
-        let language = this.translate.getBrowserLang();      
-        this.translate.setDefaultLang(language);
+  
+        this.translate.setDefaultLang('en');
 
-       await this.setLanguage(language);
+       await this.setLanguage('en');
       } else {
         await this.setLanguage(langCode);
-        this.translate.setDefaultLang(langCode);
+        this.translate.setDefaultLang(langCode || 'en');
       }
     });
   }
 
   async setLanguage(langCode) {
-    this.translate.use(langCode);
-    await this.database.setLang(langCode);
+    this.translate.use(langCode || 'en' );
+    await this.database.setLang(langCode || 'en');
   }
 }

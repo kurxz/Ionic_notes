@@ -40,7 +40,6 @@ describe("DatabaseService", () => {
   
     const spy = spyOn(dbService, "returnNotesCount").and.callThrough();
     await dbService.returnNotesCount().then((value) => {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + value)
       expect(value).toEqual(0);
     });
  
