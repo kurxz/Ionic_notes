@@ -139,35 +139,20 @@ let AppComponent = class AppComponent {
     }
     getTranslations() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
-<<<<<<< HEAD
             yield this.translate.get("translations.sMenu").subscribe((translation) => {
-=======
-            yield this.translate.get("translations.sMenu")
-                .toPromise()
-                .then((translation) => {
->>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
                 this.newNoteTranslation = translation.newNote;
                 this.newListTranslation = translation.newList;
                 this.cancelTranslation = translation.cancel;
             });
             yield this.translate
                 .get("translations.general")
-<<<<<<< HEAD
                 .subscribe((translation) => {
-=======
-                .toPromise()
-                .then((translation) => {
->>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
                 this.addTranslation = translation.add;
                 this.cancelTranslation = translation.cancel;
             });
         });
     }
-<<<<<<< HEAD
     BottomMenu() {
-=======
-    ActionSheetMenu() {
->>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             yield this.LanguageService.defaultLang();
             yield this.getTranslations();
@@ -1218,11 +1203,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /***/ ((module) => {
 
 "use strict";
-<<<<<<< HEAD
 module.exports = "<!--\r\n               _____            _        _   _       _            \r\n              |_   _|          (_)      | \\ | |     | |           \r\n                | |  ___  _ __  _  ___  |  \\| | ___ | |_ ___  ___ \r\n                | | / _ \\| '_ \\| |/ __| | . ` |/ _ \\| __/ _ \\/ __|\r\n               _| || (_) | | | | | (__  | |\\  | (_) | ||  __/\\__ \\\r\n              |_____\\___/|_| |_|_|\\___| |_| \\_|\\___/ \\__\\___||___/\r\n\r\n             \r\n   Copyright [2021] [KurXZ] [https:github.com/kurxz]\r\n\r\n   Licensed under the Apache License, Version 2.0 (the \"License\");\r\n   you may not use this file except in compliance with the License.\r\n   You may obtain a copy of the License at\r\n\r\n    http:www.apache.org/licenses/LICENSE-2.0\r\n\r\n   Unless required by applicable law or agreed to in writing, software\r\n   distributed under the License is distributed on an \"AS IS\" BASIS,\r\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n   See the License for the specific language governing permissions and\r\n   limitations under the License.       \r\n-->\r\n\r\n<ion-app>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n  <div>\r\n    <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n        <ion-tab-button tab=\"home\">\r\n          <ion-icon name=\"home\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.homePage\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button (click)=\"BottomMenu()\">\r\n          <ion-icon name=\"chevron-up-outline\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.newItem\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"settings\">\r\n          <ion-icon name=\"settings\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.settings\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n  </div>\r\n</ion-app>\r\n";
-=======
-module.exports = "<!--\r\n               _____            _        _   _       _            \r\n              |_   _|          (_)      | \\ | |     | |           \r\n                | |  ___  _ __  _  ___  |  \\| | ___ | |_ ___  ___ \r\n                | | / _ \\| '_ \\| |/ __| | . ` |/ _ \\| __/ _ \\/ __|\r\n               _| || (_) | | | | | (__  | |\\  | (_) | ||  __/\\__ \\\r\n              |_____\\___/|_| |_|_|\\___| |_| \\_|\\___/ \\__\\___||___/\r\n\r\n             \r\n   Copyright [2021] [KurXZ] [https:github.com/kurxz]\r\n\r\n   Licensed under the Apache License, Version 2.0 (the \"License\");\r\n   you may not use this file except in compliance with the License.\r\n   You may obtain a copy of the License at\r\n\r\n    http:www.apache.org/licenses/LICENSE-2.0\r\n\r\n   Unless required by applicable law or agreed to in writing, software\r\n   distributed under the License is distributed on an \"AS IS\" BASIS,\r\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\r\n   See the License for the specific language governing permissions and\r\n   limitations under the License.       \r\n-->\r\n\r\n<ion-app>\r\n  <ion-router-outlet id=\"content1\"></ion-router-outlet>\r\n  <div>\r\n    <ion-tabs>\r\n      <ion-tab-bar slot=\"bottom\">\r\n        <ion-tab-button tab=\"home\">\r\n          <ion-icon name=\"home\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.homePage\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button (click)=\"ActionSheetMenu()\">\r\n          <ion-icon name=\"chevron-up-outline\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.newItem\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n\r\n        <ion-tab-button tab=\"settings\">\r\n          <ion-icon name=\"settings\"></ion-icon>\r\n          <ion-label>{{ \"translations.sMenu.settings\" | translate }}</ion-label>\r\n        </ion-tab-button>\r\n      </ion-tab-bar>\r\n    </ion-tabs>\r\n  </div>\r\n</ion-app>\r\n";
->>>>>>> f3653456ff14c89b05cf6033875674e7852fa57b
 
 /***/ })
 

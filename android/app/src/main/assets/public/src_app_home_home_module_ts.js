@@ -21,11 +21,9 @@ let FilterPipe = class FilterPipe {
             return data;
         }
         var filteredData = data.filter((element) => {
-            console.log(args);
             args = args.toLowerCase();
-            console.log(args);
-            if (element.list.text != null && element.list.text.toLowerCase().includes(args)) {
-                console.warn(element.list.text.toLowerCase());
+            if (element.list.text != null &&
+                element.list.text.toLowerCase().includes(args)) {
                 return true;
             }
             if (element.list.myLists != null) {
