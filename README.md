@@ -8,7 +8,11 @@ Supported Languages:
 - Português Brasil
 - Italiano
 
-### The changelog can be found [here](CHANGELOG.md)
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+    alt="Get it on F-Droid"
+    height="80">](https://f-droid.org/en/packages/kurxz.github.io/)
+
+#### The changelog can be found [here](CHANGELOG.md)
 
 # How to build
 ### The core libraries are Ionic 5 and Angular 13
