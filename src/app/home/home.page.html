@@ -43,7 +43,7 @@
   </ion-refresher>
 
   <div id="container">
-    <ion-searchbar animated [(ngModel)]="searchContext"></ion-searchbar>
+    <ion-searchbar animated [(ngModel)]="searchContext" placeholder="{{ 'translations.general.searching' | translate }}..."></ion-searchbar>
     <div>
       <div *ngIf="notes >  0 ; else no_notesFound">
         <ion-row *ngFor="let item of listNotes | filter: searchContext ">
