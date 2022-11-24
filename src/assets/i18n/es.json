@@ -6,7 +6,8 @@
       "noAnswer": "No",
       "alert": "Alerta",
       "add": "Agregar",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "searching" : "Buscando"
     },
     "homePage": {
       "noNotes": "No se encontraron notas",

@@ -5,7 +5,8 @@
       "noAnswer": "Não",
       "alert": "Alerta",
       "add": "Adicionar",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "searching" : "Procurando"
     },
     "homePage": {
       "noNotes": "Nenhuma anotação encontrada",

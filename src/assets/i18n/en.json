@@ -6,7 +6,8 @@
       "alert": "Alert!",
       "add": "Add",
       "cancel": "Cancel",
-      "created": "Created at"
+      "created": "Created at",
+      "searching" : "Searching"
     },
 
     "homePage": {

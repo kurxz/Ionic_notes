@@ -6,7 +6,8 @@
       "alert": "Avvertire!",
       "add": "Addizionare",
       "cancel": "Annulla",
-      "created": "Creato a"
+      "created": "Creato a",
+      "searching" : "Ricerca"
     },
 
     "homePage": {
