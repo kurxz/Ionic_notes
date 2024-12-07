@@ -1,6 +1,6 @@
 # Ionic Notes
-
-### **Notepad** app using Ionic Framework. With multi language support.
+### * Outdated, this app will not have future updates.
+**Notepad** app using Ionic Framework. With multi language support.
 
 Supported Languages:
 - English
